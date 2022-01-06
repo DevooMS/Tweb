@@ -27,14 +27,15 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                    <form class="user" action="assets/php/db_login.php" method="POST">
+                                    <?php if ($errorMessage != '') { ?><div id="login-alert" class="alert alert-danger col-sm-12"><?php echo $errorMessage; ?></div><?php } ?>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="loginemail" aria-describedby="emailHelp" placeholder="Email Address" name="loginemail" value="<?php if(isset($_COOKIE["loginId"])) { echo $_COOKIE["loginId"]; } ?>"></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="loginpassword" placeholder="Password" name="loginpassword" value="<?php if(isset($_COOKIE["loginpassword"])) { echo $_COOKIE["loginPass"]; } ?>"></div>
                                         <div class="mb-3">
                                             <div class="custom-control custom-checkbox small">
-                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="remberme"><label class="form-check-label custom-control-label" for="remberme">Remember Me </label><?php if(isset($_COOKIE["loginId"])) { ?> checked <?php } ?>> Remember me</div>
                                             </div>
-                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit" name="login" value="Login">Login</button>
                                         <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Login with Facebook</a>
                                         <hr>
                                     </form>

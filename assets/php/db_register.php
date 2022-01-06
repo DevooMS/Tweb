@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once("db_connection.php");
 if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
     if (isset($_POST['submit'])) {
         if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['vat_number']) && isset($_POST['firstname']) && isset($_POST['lastname'])){
@@ -8,15 +9,11 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
             $email = $_POST['email'];
             $vat_number = $_POST['vat_number'];
             $password = $_POST['password'];
-            $host = "localhost";
-            $dbUsername = "root";
-            $dbPassword = "";
-            $dbName = "prj";
             $md5pass=md5($password);
-            $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-                if ($conn->connect_error) {
-                 die('Could not connect to the database.');
-                }else{
+           // $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
+                //if ($conn->connect_error) {
+                 //die('Could not connect to the database.');
+                //}else{
                     $Select = "SELECT email FROM register WHERE email = ? LIMIT 1";
                     $Insert = "INSERT INTO register(email,firstname,lastname,vat_number,password) values(?, ?, ?, ?, ?)";
                     $stmt = $conn->prepare($Select);
@@ -40,9 +37,10 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
                     header("Location: http://localhost/Tweb/register.php");
                     $stmt->close();
                     $conn->close();
+                    exit();
                     }
             
-                }
+               // }
 
             }else{
            $_SESSION["unsuccessful"]= "All field are required.";
