@@ -1,7 +1,5 @@
-<?php
-error_log("your message");
-session_start();
-?>
+
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,22 +30,26 @@ session_start();
                             </div>
                             <form class="user" action="assets/php/db_register.php" method="POST">
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class= "form-control form-control-user" type="text" id="firstname" placeholder="First Name" name="firstname" /></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="lastname" placeholder="Last Name" name="lastname" /></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class= "form-control form-control-user" type="text" id="firstname" placeholder="First Name" name="firstname" required/></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="lastname" placeholder="Last Name" name="lastname" required/></div>
                                 </div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="email" placeholder="Email Address" name="email"/></div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="number" id="vat_number" placeholder="Vat Number" name="vat_number"/></div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="email" placeholder="Email Address" name="email"required/></div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="number" id="vat_number" placeholder="Vat Number" name="vat_number"required/></div>
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"/></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"required/></div>
                                     <div class="invalid-feedback"> Please enter new password.</div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="confirm_password" placeholder="Repeat Password" name="confirm_password"/></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="confirm_password" placeholder="Repeat Password" name="confirm_password"required/></div>
                                     <div class="invalid-feedback"> Please enter new password.</div>
                                 </div><button class="btn btn-primary d-block btn-user w-100" type="submit" value="submit" name="submit">Register Account</button>
-                                <div id="flash"> </div>
                                 <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>
                                 <hr>
                             </form>
-                            <div id="flash"> </div>
+                            <?php session_start(); if(isset($_SESSION['unsuccessful'])): ?>
+                            <p style="color:red;" class="text-center" >Error: <?= $_SESSION['unsuccessful']; ?></p>
+                            <?php elseif (isset($_SESSION['successfully'])): ?>
+                            <p style="color:green;" class="text-center" > <?= $_SESSION['successfully']; ?></p>
+                            <?php header("refresh: 3; url = http://localhost/tweb/login.html"); ?>
+                            <?php endif; ?>
                             <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
                             <div class="text-center"><a class="small" href="login.html">Already have an account? Login!</a></div>
                         </div>
@@ -56,6 +58,7 @@ session_start();
             </div>
         </div>
     </div>
+    <?php unset($_SESSION['unsuccessful']);unset($_SESSION['successfully']); ?>
     <script  src="assets/js/verifypass.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/theme.js"></script>

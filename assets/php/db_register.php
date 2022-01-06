@@ -1,10 +1,8 @@
 <?php
-//session_start();
+session_start();
 if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
     if (isset($_POST['submit'])) {
         if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['vat_number']) && isset($_POST['firstname']) && isset($_POST['lastname'])){
-            echo"OK";
-            //$_SESSION["flash"]= "All field are required.";
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
@@ -16,9 +14,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
             $dbName = "prj";
             $md5pass=md5($password);
             $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-            echo"OK3";
                 if ($conn->connect_error) {
-                    echo"NO3";
                  die('Could not connect to the database.');
                 }else{
                     $Select = "SELECT email FROM register WHERE email = ? LIMIT 1";
@@ -35,13 +31,13 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
                         $stmt = $conn->prepare($Insert);
                         $stmt->bind_param("sssis",$email,$firstname,$lastname,$vat_number,$md5pass);
                         if ($stmt->execute()) {
-                            //$show_modal = true;
-                           //header("Location: http://localhost/Tweb/register.php");
-                           echo"OK";
+                            $_SESSION["successfully"]="Account registered successfully, you will be taken back to the login page";
+                            header("Location: http://localhost/Tweb/register.php");
                             exit();
                         }else { echo $stmt->error; }
-                    }else { //$_SESSION["flash"]= "Someone already registers using this email.";
-                    echo "regiistrato"; 
+                    }else{ 
+                    $_SESSION["unsuccessful"]= "Someone already registers using this email.";
+                    header("Location: http://localhost/Tweb/register.php");
                     $stmt->close();
                     $conn->close();
                     }
@@ -49,11 +45,10 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
                 }
 
             }else{
-                echo"nope";
-           //$_SESSION["flash"]= "All field are required.";
+           $_SESSION["unsuccessful"]= "All field are required.";
             die();
         }
-    }else { echo "Submit button is not set";}
+    }else {header("HTTP/1.1 404 Invalid Request"); }
 }else{
     echo"OK";
     header("HTTP/1.1 400 Invalid Request");
