@@ -28,7 +28,7 @@
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
                                     <form class="user" action="assets/php/db_login.php" method="POST">
-                                    <?php if ($errorMessage != '') { ?><div id="login-alert" class="alert alert-danger col-sm-12"><?php echo $errorMessage; ?></div><?php } ?>
+                             
                                         <div class="mb-3"><input class="form-control form-control-user" type="email" id="loginemail" aria-describedby="emailHelp" placeholder="Email Address" name="loginemail" value="<?php if(isset($_COOKIE["loginId"])) { echo $_COOKIE["loginId"]; } ?>"></div>
                                         <div class="mb-3"><input class="form-control form-control-user" type="password" id="loginpassword" placeholder="Password" name="loginpassword" value="<?php if(isset($_COOKIE["loginpassword"])) { echo $_COOKIE["loginPass"]; } ?>"></div>
                                         <div class="mb-3">
