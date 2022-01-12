@@ -11,8 +11,4 @@ if ($conn->connect_error) {
     exit();
 }
 
-
-
-
-
 ?>
