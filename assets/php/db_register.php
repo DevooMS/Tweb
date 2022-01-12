@@ -10,10 +10,6 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
             $vat_number = $_POST['vat_number'];
             $password = $_POST['password'];
             $md5pass=md5($password);
-           // $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
-                //if ($conn->connect_error) {
-                 //die('Could not connect to the database.');
-                //}else{
                     $Select = "SELECT email FROM register WHERE email = ? LIMIT 1";
                     $Insert = "INSERT INTO register(email,firstname,lastname,vat_number,password) values(?, ?, ?, ?, ?)";
                     $stmt = $conn->prepare($Select);
@@ -39,8 +35,6 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
                     $conn->close();
                     exit();
                     }
-            
-               // }
 
             }else{
            $_SESSION["unsuccessful"]= "All field are required.";
