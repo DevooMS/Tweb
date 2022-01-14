@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login - Brand</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="../fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="../fonts/font-awesome.min.css">
@@ -28,10 +29,11 @@
                                     </div>
                                     <form class="user" action="db_login.php" method="POST">
                              
-                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="loginemail" aria-describedby="emailHelp" placeholder="Email Address" name="loginemail" value="<?php if(isset($_COOKIE["loginemail"])) { echo $_COOKIE["loginemail"]; } ?>">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="loginpassword" placeholder="Password" name="loginpassword" value="<?php if(isset($_COOKIE["loginpassword"])) { echo $_COOKIE["loginpassword"]; } ?>">
+                                        <div class="mt-3"><input class="form-control " type="email" id="loginemail" aria-describedby="emailHelp" placeholder="Email Address" name="loginemail" value="<?php if(isset($_COOKIE["loginemail"])) { echo $_COOKIE["loginemail"]; } ?>">
+                            
+                                        <div class="mt-3"><input class="form-control " type="password" id="loginpassword" placeholder="Password" name="loginpassword" value="<?php if(isset($_COOKIE["loginpassword"])) { echo $_COOKIE["loginpassword"]; } ?>">
                                         
-                                        <div class="mb-3">
+                                        <div class="mt-2">
                                             <div class="custom-control custom-checkbox small">
                                             <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="remember" name="remember" <?php if(isset($_COOKIE["loginemail"])) { ?> checked <?php } ?>> Remember me</div> 
                                                
