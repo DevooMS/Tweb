@@ -121,7 +121,8 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1">Blank Page</h3>
+                   <!-- <h3 class="text-dark mb-1">Blank Page</h3>-->
+                   <?php include("list.php"); ?>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">

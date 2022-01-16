@@ -1,9 +1,12 @@
 <?php
 
 session_start();
+
 include_once("db_connection.php");
+echo"k";
 $errorMessage = '';
 if(isset($_POST["login"]) && $_POST["loginemail"]!=''&& $_POST["loginpassword"]!='') {	
+	$_SESSION["unsuccessful"]= "All field are required.";
 	$loginemail = $_POST['loginemail'];
 	$loginpassword = $_POST['loginpassword'];
 	$sql = "SELECT email FROM register WHERE email='".$loginemail."' AND password='".md5($loginpassword)."'";
@@ -31,5 +34,13 @@ if(isset($_POST["login"]) && $_POST["loginemail"]!=''&& $_POST["loginpassword"]!
 	$errorMessage = "Enter Both user and password!";	
 } else{echo"no";}
 
+
+if(isLogged()){
+	print " \"isLogged\": true, \n";
+	print "  \"name\": \"".$_SESSION["name"]."\"";
+} else {
+	print " \"isLogged\": false \n";
+}
+print "\n}";
 
 ?>

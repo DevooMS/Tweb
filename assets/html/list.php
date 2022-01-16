@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
-    <link rel="stylesheet" href="../bootstrapa/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="../fonts/fontawesome-all.min.css">
@@ -17,20 +17,16 @@
 </head>
 
 <body id="page-top">
-
-<?php include("top.html");?>
-<?php include("slider.html");?>
 <div id="wrapper">
 
   
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
-        
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Team</h3>
+                <h3 class="text-dark mb-4">Catalog</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Employee Info</p>
+                        <p class="text-primary m-0 fw-bold">Item List</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -53,8 +49,8 @@
                                     <th>Name Product</th>
                                     <th>Brand</th>
                                     <th>Sku ID</th>
-                                    <th>Quantita</th>
-                                    <th>Costo</th>
+                                    <th>Quantity</th>
+                                    <th>Cost</th>
                                     <th>Void</th>
                                 </tr>
                                 </thead>
@@ -66,8 +62,8 @@
                                     <th>Name Product</th>
                                     <th>Brand</th>
                                     <th>Sku ID</th>
-                                    <th>Quantita</th>
-                                    <th>Costo</th>
+                                    <th>Quantity</th>
+                                    <th>Cost</th>
                                     <th>Void</th>
                                 </tr>
                                 </tfoot>
@@ -94,9 +90,6 @@
             </div>
         </div>
         <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © Brand 2021</span></div>
-            </div>
         </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </div>
