@@ -1,22 +1,10 @@
 
 
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Register - Brand</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="../fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="../fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="../fonts/fontawesome5-overrides.min.css">
-    <script src="../js/jquery-3.6.0.js"></script>
-
-</head>
 
 <body class="bg-gradient-primary">
-    
+<?php include("resource.html")?>
+<script src="../js/register.js" type="text/javascript"></script>
     <div class="container">
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
@@ -29,7 +17,6 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Create an Account!</h4>
                             </div>
-                            <form class="user" action="db_register.php" method="POST">
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class= "form-control " type="text" id="firstname" placeholder="First Name" name="firstname" required/></div>
                                     <div class="col-sm-6"><input class="form-control " type="text" id="lastname" placeholder="Last Name" name="lastname" required/></div>
@@ -41,16 +28,10 @@
                                     <div class="invalid-feedback"> Please enter new password.</div>
                                     <div class="col-sm-6"><input class="form-control " type="password" id="confirm_password" placeholder="Repeat Password" name="confirm_password"required/></div>
                                     <div class="invalid-feedback"> Please enter new password.</div>
-                                </div><button class="btn btn-primary d-block btn-user w-100" type="submit" value="submit" name="submit">Register Account</button>
+                                </div><button class="btn btn-primary d-block btn-user w-100" type="submit" id="submit">Register Account</button>
                                 <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>
                                 <hr>
-                            </form>
-                            <?php session_start(); if(isset($_SESSION['unsuccessful'])): ?>
-                            <p style="color:red;" class="text-center" >Error: <?= $_SESSION['unsuccessful']; ?></p>
-                            <?php elseif (isset($_SESSION['successfully'])): ?>
-                            <p style="color:green;" class="text-center" > <?= $_SESSION['successfully']; ?></p>
-                            <?php header("refresh: 3; url = http://localhost/Tweb/assets/php/login.php"); ?>
-                            <?php endif; ?>
+                            <div class="text-center" id="phpmsg"></div>
                             <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
                             <div class="text-center"><a class="small" href="login.php">Already have an account? Login!</a></div>
                         </div>
@@ -59,10 +40,7 @@
             </div>
         </div>
     </div>
-    <?php unset($_SESSION['unsuccessful']);unset($_SESSION['successfully']); ?>
-    <script  src="../js/verifypass.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/theme.js"></script>
+    
 </body>
 
 </html>

@@ -115,8 +115,8 @@
     flex:1 0 auto
   }
   /*imposto il colore background*/
-  /*.bg-gradient-primary{
+  .bg-gradient-primary{
     background-color:#0d49fd;
     background-size:cover
-  }*/
+  }
   

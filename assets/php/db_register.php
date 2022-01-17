@@ -4,7 +4,9 @@ session_start();
 include_once("db_connection.php");
 if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
     if (isset($_POST['submit'])) {
+        echo"OK";
         if (!empty($_POST['email']) && isset($_POST['password']) && isset($_POST['vat_number']) && isset($_POST['firstname']) && isset($_POST['lastname'])){
+            echo"ENTER";
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
@@ -26,12 +28,10 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
                         $stmt->bind_param("sssis",$email,$firstname,$lastname,$vat_number,$md5pass);
                         if ($stmt->execute()) {
                             $_SESSION["successfully"]="Account registered successfully, you will be taken back to the login page";
-                            header("Location: http://localhost/Tweb/register.php");
                             exit();
                         }else { echo $stmt->error; }
                     }else{ 
                     $_SESSION["unsuccessful"]= "Someone already registers using this email.";
-                    header("Location: http://localhost/Tweb/register.php");
                     $stmt->close();
                     $conn->close();
                     exit();
@@ -43,7 +43,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
         }
     }else {header("HTTP/1.1 404 Invalid Request"); }
 }else{
-    echo"OK";
+    echo"NOTOK";
     header("HTTP/1.1 400 Invalid Request");
     die("ERROR 400: Invalid request - This service accepts only POST requests.");
 }
