@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inloggen</title>
+<meta charset="iso-8859-1">
+<meta name="keywords" content="Javascript">
+<meta name="author" content="Arjan Oskam">
+<meta name="description" content="Javascript">
+<link rel="Stylesheet" href="css/style.css">
+<script language="javascript">
+function setCookie()
+{
+    checkCookie();
+    var cname = "username";
+    var cvalue = document.getElementById("username").value;
+    var exdays = 7;
+    var d = new Date();
+    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) 
+      {
+      var c = ca[i].trim();
+      if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+      }
+    return "";
+}
+
+function checkCookie()
+{
+    var user = getCookie("username");
+    if (user != "")
+    {
+        alert("Welcome again " + user);
+    }
+}
+</script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="head">
+    <div><img src="images/logo.gif" id="logo" alt="logo"></div>
+    <!-- #Logo -->
+    <div id="banner"><img src="images/banner.jpg" alt="banner"></div>
+  </div>
+  <!-- #Head -->
+  <div id="menu">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="id-ontwikkelaar.html">ID-Ontwikkelaar</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="formulier.html">Registreren</a></li>
+        <li><a href="inloggen.html">Inloggen</a></li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Menu -->
+  <div id="inhoud"> <br>
+    <br>
+    <h2>Inloggen</h2>
+    <div id="tekst">
+      <form class="uitlijnen" id="form" onsubmit="setCookie();" method="post">
+        <br>
+        Gebruikersnaam:
+        <input type="text" name="username" id="username" placeholder="Typ hier uw username" required>
+        <br>
+        <br>
+        Wachtwoord:
+        <input type="password" name="wachtwoord" placeholder="Typ hier uw wachtwoord" required>
+        <br>
+        <br>
+        <input type="submit" value="inloggen" class="button">
+      </form>
+    </div>
+    <!-- #Tekst -->
+  </div>
+  <!-- #Inhoud -->
+</div>
+<!-- #Wrapper -->
+</body>
+</html>

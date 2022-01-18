@@ -30,3 +30,13 @@ input {
 .login_phase_two {
   display: none;
 }
+
+#form label.error {
+    color: red;
+    font-weight: bold;
+}
+ 
+.main {
+    width: 600px;
+    margin: 0 auto;
+}

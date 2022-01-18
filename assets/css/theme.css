@@ -100,3 +100,7 @@
 #wrapper #content-wrapper #content{
   flex:1 0 auto
 }
+/* form assegnazione colore */
+.error {
+  color: red;
+}
