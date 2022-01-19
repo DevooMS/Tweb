@@ -1,33 +1,3 @@
-/*$(function() {
-    $("#errormsg").hide();
-
-    // print flash message if it has been set
-   
-    
-    $("#login").on("click",function(){
-        //alert("pressed");
-        $.post("../php/db_login.php",{ loginemail: $("#loginemail").val(), loginpassword: $("#loginpassword").val()})  
-        $.get("../php/msg_check.php", printFlash, "json");     
-        printFlash("json");
-    })
-
-});*/
-
-    
-
-
-
-/*function goToIndex(json){
-    // go to index.php if logged in, back to login.php otherwise
-    if(json.isLogged){
-        $(window.location).attr('href', 'index.php');
-    }
-    else {
-        $(window.location).attr('href', 'login.php');
-    }
-}*/
-
-
 $("#phpmsg").hide();
 $().ready(function() {
     // Selezione form e definizione dei metodi di validazione
@@ -54,17 +24,13 @@ $().ready(function() {
                 required: "Please input password",
             },
         },
-        // Settiamo il submit handler per la form
-        submitHandler: function(form) {
-            
+
+        submitHandler: function(form) { 
             $("document").ready(function() {
-               // console.log("OK");
                     var thisremember = 0;
-                
-                    //var thisremember=itsremember();
                     var thislogin=$("#loginemail").val();
                     var thisloginpassword=$("#loginpassword").val();
-                   // $.get("../php/msg_check.php", printFlash, "json");
+                  
                     $.ajax({
                         url:'../php/db_login.php',
                         method: 'POST',
@@ -75,17 +41,9 @@ $().ready(function() {
                         }, 
                         dataType:'json',
                         });
-                    //printthis(printthis()); 
-                    printthis();   
-                    //setloginc(thislogin,thisloginpassword);
+                    printthis(printthis()); 
+                   
             });
         }
     });
 });
- 
-
-
-/*$("#remember").on('click',function(){
-    console.log("COOKIE");
-document.getElementById("myCheck").checked = true;
-});*/

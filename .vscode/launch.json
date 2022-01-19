@@ -4,7 +4,13 @@
     // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "Tweb_cc99c4a5"
+        },
         {
             "name": "Listen for Xdebug",
             "type": "php",
