@@ -19,7 +19,7 @@ $().ready(function() {
         },
         // Personalizzimao i mesasggi di errore
         messages: {
-          loginemail: "Inserisci la login",
+          loginemail: "Please input email",
           loginpassword: {
                 required: "Please input password",
             },
@@ -40,10 +40,11 @@ $().ready(function() {
                         remember:thisremember
                         }, 
                         dataType:'json',
+                  
                         });
-                    printthis(printthis()); 
-                   
+                    printthis(printthis());
             });
         }
     });
 });
+

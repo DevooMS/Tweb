@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php include("resource.html")?>
+<?php include("lib/resource.php")?>
 <body class="bg-gradient-primary">
     <div class="container">
         <div class="row justify-content-center">
@@ -17,14 +17,16 @@
                                         <h4 class="text-dark mb-4" id =loginnoer>Welcome Back!</h4>
                                     </div>
                                     <form id="loginpage" action="#" >
-                                        <div class="mt-3"><input class="form-control " type="email" id="loginemail" aria-describedby="emailHelp" placeholder="Email Address" name="loginemail">
+                                        <div class="mt-3"><input class="form-control " type="email" id="loginemail" aria-describedby="emailHelp" placeholder="Email Address" name="loginemail"></div>
                             
-                                        <div class="mt-3"><input class="form-control " type="password" id="loginpassword" placeholder="Password" name="loginpassword">
+                                        <div class="mt-3"><input class="form-control " type="password" id="loginpassword" placeholder="Password" name="loginpassword"></div>
                                         
                                         <div class="mt-2">
                                             <div class="custom-control custom-checkbox small"></div>
                                             <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="remember" name="remember">Remember Me</div> 
-                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit" name="login" value="Login" id="login">Login</button>
+                                        </div>
+
+                                        <button class="btn btn-primary d-block btn-user w-100" type="submit" name="login" value="Login" id="login">Login</button>
                                         <hr><div class="mb-2 text-center" id =phpmsg></div>
                                         <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Login with Facebook</a>
                                         <hr>

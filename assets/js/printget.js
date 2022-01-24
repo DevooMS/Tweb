@@ -15,6 +15,7 @@ function printFlash(json) {
             $("#phpmsg").show();
             $("#phpmsg").css('color', 'red');
             $("#phpmsg").text(json.unsuccessful); //stampo il messaggio passato dalla sessione unsuccessful
+            $(window.location).attr('href', 'login.php');
         }
     } else if (json.successfully) {
         if (json.isSet) {
@@ -22,6 +23,7 @@ function printFlash(json) {
             $("#phpmsg").show();
             $("#phpmsg").css('color', 'green');
             $("#phpmsg").text(json.successfully); //stampo il messaggio passato dalla sessione unsuccessful
+            window.location.replace("http://localhost/Tweb/assets/html/catalog.php");
         }
     } else {
         $("#phpmsg").hide();

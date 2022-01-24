@@ -1,4 +1,76 @@
 
+ /*Classe Cointaner Customizzati BootStrap*/
+ /*1rem=16px*/
+ /*Blueside Esteso*/
+ .sidebar{
+  width:6.5rem;
+  min-height:100vh
+}
+/*Centro testo con logo*/
+.sidebar .nav-item .nav-link{
+  text-align:center;
+  padding:.75rem 1rem;
+  width:6.5rem;
+  font-size:.65rem
+}
+/*Logo e poi test*/
+.sidebar .nav-item .nav-link span{
+  display:block
+}
+/*Font size*/
+.sidebar .nav-item .nav-link i{
+  font-size:1rem
+}
+/*Spessore Font*/
+.sidebar .nav-item .nav-link.active{
+  font-weight:700
+}
+/*Cerchio trasparente*/
+.sidebar #sidebarToggle{
+  width:2.5rem;
+  height:2.5rem;
+  text-align:center;
+  margin-bottom:1rem;
+  cursor:pointer
+}
+/*Freccia*/
+.sidebar #sidebarToggle::after{
+  font-weight:900;
+  content:"";
+  font-family:"Font Awesome 5 Free";
+  margin-right:.1rem
+}
+
+@media(min-width: 768px){
+ /*Barra blu espanso*/
+  .sidebar{
+      width:14rem !important
+  }
+ /*Sidebar Toggle serve per nascondere la bara ma non in modo permanente*/
+  .sidebar.toggled{
+      overflow:visible;
+      width:6.5rem !important
+  }
+
+  /*Nascondere Testo quando clicco la freccia*/
+  .sidebar.toggled .sidebar-brand .sidebar-brand-text{
+      display:none
+  }
+}*/
+
+/*colore trasparente attorno la freccia*/
+.sidebar-dark .nav-item .nav-link[data-bs-toggle=collapse]::after{
+  color:rgba(255,255,255,.5)
+}
+
+.sidebar-dark #sidebarToggle{
+  background-color:rgba(255,255,255,.2)
+}
+/*Colore Freccia*/
+.sidebar-dark #sidebarToggle::after{
+  color:rgba(255,255,255,.5)
+}
+
 /*Colore Soffuso sidebar e colore background*/
 .bg-gradient-primary{
   background-color:#0d49fd;

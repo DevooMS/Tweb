@@ -3,7 +3,7 @@
 <html>
 
 <body class="bg-gradient-primary">
-<?php include("resource.html")?>
+<?php include("lib/resource.php")?>
 <script src="../js/register.js" type="text/javascript"></script>
 
     <div class="container">

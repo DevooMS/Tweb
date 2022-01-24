@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SESSION)) {session_start();}
 
-function dbconnect(){
+/*function dbconnect(){
     $host = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
@@ -24,4 +24,28 @@ function dbconnect(){
         return true;
     }
 }*/
+
+class dbSetup {
+    protected $serverName;
+    protected $userName;
+    protected $password;
+    protected $dbName;
+    function dbConfig() {
+        $this -> serverName = 'localhost';
+        $this -> userName = 'root';
+        $this -> password = "";
+        $this -> dbName = "prj";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 ?>

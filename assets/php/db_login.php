@@ -10,9 +10,7 @@ if ($_POST["loginemail"] != '' && $_POST["loginpassword"] != '') {
     $loginemail = $_POST['loginemail'];
     $loginpassword = $_POST['loginpassword'];
     $cookievalue = $_POST["remember"];
-    $sql = "SELECT email FROM register WHERE email='".$loginemail.
-    "' AND password='".md5($loginpassword).
-    "'";
+    $sql = "SELECT email FROM register WHERE email='".$loginemail."' AND password='".md5($loginpassword). "'";
     $res = mysqli_query($conn, $sql) or die("database error:".mysqli_error($conn));
     $isValidLogin = mysqli_num_rows($res);
     if ($isValidLogin) {
@@ -22,12 +20,12 @@ if ($_POST["loginemail"] != '' && $_POST["loginpassword"] != '') {
         } else {
             $_SESSION['type'] = "user";
         }
-        session_regenerate_id(true);
         $_SESSION["user"] = $logged_type['email'];
         $_SESSION["successfully"] = "Correct!";
+        
         exit();
     } else {
-        echo "error";
+       
         $_SESSION["unsuccessful"] = "The password you entered is incorrect";
         exit();
     }
