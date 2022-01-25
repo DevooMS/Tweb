@@ -1,5 +1,5 @@
 <?php
-include('catalog.php');
+include('db_catalog.php');
 $emp = new catalog();
 if(!empty($_POST['action']) && $_POST['action'] == 'listCatalog') {
 	$emp->catalogList();

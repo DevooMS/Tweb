@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('db_connection.php');
 class catalog extends dbSetup {	
     protected $hostNamep;
     protected $userNamep;
@@ -9,7 +9,7 @@ class catalog extends dbSetup {
 	private $dbConnect = false;
     public function __construct(){
         if(!$this->dbConnect){ 		
-			$database = new dbConfig();            
+			$database = new dbSetup();            
             $this -> hostNamep = $database -> serverName;
             $this -> userNamep = $database -> userName;
             $this -> password = $database ->password;

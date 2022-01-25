@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
-
+<?php include "lib/top.php"; ?>
 <head>
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <script src="../js/library/jquery-3.6.0.js"></script>
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/theme.css">
-  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/catalog.js"></script>
+  <script src="../js/catalog.js"></script>
   <script src="../js/library/jquery.dataTables.min.js"></script>
   <script src="../js/library/dataTables.bootstrap.min.js"></script>
-  <script src="../js/catalog.js"></script>
-  <title>Catalog - Yuna</title>
+  <title>Table - Brand</title>
 </head>
-
 <body id="page-top">
   <div id="wrapper">
     <div class="d-flex flex-column" id="content-wrapper">
@@ -24,9 +18,7 @@
           <h3 class="text-dark mb-4">Catalog</h3>
           <div class="card shadow">
             <div class="card-header py-3">
-              <p class="text-primary mt-1 fw-bold float-start">Item List</p>
-			  <button type="button" name="add" id="addProduct" class="btn btn-success btn-xs float-end">Add Product</button>
-              
+              <p class="text-primary m-0 fw-bold">Item List</p>
             </div>
             <div class="card-body">
               <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
@@ -50,6 +42,7 @@
                   <form method="post" id="productForm" name="productForm">
                     <div class="modal-content">
                       <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
                         <h4 class="modal-title"></h4>
                       </div>
                       <div class="modal-body">
@@ -70,7 +63,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <input type="hidden" name="action" id="action" value=""> <input type="submit" name="save" id="save" class="btn btn-primary" value="Save"> <button type="button" class="closebtn btn btn-secondary">Close</button>
+                        <input type="hidden" name="action" id="action" value=""> <input type="submit" name="save" id="save" class="btn btn-info" value="Save"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </form>
@@ -80,13 +73,13 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-msgtill"></h4><button type="button" class="closebtn btn-close" aria-label="Close"><span aria-hidden="true"></span></button>
+                      <h4 class="modal-msgtill"></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
                       <p class="modal-msg"></p>
                     </div>
                     <div class="modal-footer">
-                      <input type="hidden"> <button type="button" id="deletbtn" class="btn btn-primary">Confirm</button> <button type="button" class="closebtn  btn btn-secondary" >Close</button>
+                      <input type="hidden"> <button type="button" id="deletbtn" class="btn btn-primary">Confirm</button> <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>

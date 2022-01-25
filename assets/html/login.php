@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <?php include("lib/resource.php")?>
+<head>
+<title>Catalog - Yuna</title>
+<script src="../js/library/jquery.validator-1.19.js"></script>
+<script src="../js/printget.js" type="text/javascript"></script>
+</head>
 <body class="bg-gradient-primary">
     <div class="container">
         <div class="row justify-content-center">

@@ -1,3 +1,8 @@
+$(document).ready(function() {
+	$('#example').DataTable( {
+		"pagingType": "full_numbers"
+	} );
+} );
 $(document).ready(function(){	
 	var listData = $('#catalogList').DataTable({
 		"lengthChange": false,       //serve per controllare la paginazione
@@ -5,14 +10,14 @@ $(document).ready(function(){
 		"serverSide":true,         //serve a dire che i dati sono presi da lato server
 		"order":[],				 //serve dire che non e ordinato ma viene caricato i dati da come e stato fato il fetch
 		"ajax":{
-			url:"action.php",
+			url:"../php/action.php",
 			type:"POST",
 			data:{action:'listCatalog'},
 			dataType:"json"
 		},
 		"columnDefs":[         //definisco che la colona 0,6,7 non sia ordinabile e posso fare anche altre operazione come nascondi tabella
 			{
-				"targets":[0, 5, 6,7],
+				"targets":[0,1,2,3,4,5,6,7],
 				"orderable":false,
 			},
 		],
@@ -34,7 +39,7 @@ $(document).ready(function(){
 		var skuid = $(this).attr("skuid");           //ritorna il valore di skuid con this        
 		var action = 'getProduct';
 		$.ajax({
-			url:'action.php',
+			url:'../php/action.php',
 			method:"POST",
 			data:{skuid:skuid, action:action},
 			dataType:"json",
@@ -57,7 +62,7 @@ $(document).ready(function(){
 		$('#save').attr('disabled','disabled');
 		var formData = $(this).serialize();
 		$.ajax({
-			url:"action.php",
+			url:"../php/action.php",
 			method:"POST",
 			data:formData,
 			success:function(data){				
@@ -81,7 +86,7 @@ $(document).ready(function(){
 		
 		$( "#deletbtn" ).on( "click", function() {
 				$.ajax({
-					url:"action.php",
+					url:"../php/action.php",
 					method:"POST",
 					data:{skuid:skuid, action:action},
 					success:function(data) {					
@@ -116,4 +121,9 @@ $(document).ready(function(){
 			return false;
 		}*/
 	});
+	$(".closebtn").on('click', function(){
+		$('#deleteModal').modal('hide');
+		$('#productModal').modal('hide');
+	});
+
 });
