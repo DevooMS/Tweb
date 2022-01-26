@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <?php include("lib/top.php")?>
-<?php include("lib/acess.php")?>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script src="../js/profile.js"></script>
     <title>Profile - Brand</title>
 </head>
     
@@ -18,7 +19,7 @@
                     <div class="row mb-3">
                         <div class="col-lg-4">
                             <div class="card mb-3">
-                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/image1.jpg" width="160" height="160">
+                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="../img/dogs/image3.jpeg" width="160" height="160">
                                 </div>
                             </div>
                             <div class="card shadow mb-4">
@@ -52,11 +53,11 @@
                                             <form>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
-                                                    </div>
-                                                    <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                                        <div class="mb-3"><label class="form-label" for="vat"><strong>Vat Number</strong></label><input class="form-control" type="text" id="vat" placeholder="Vat Number" name="vat"></div>
+                                                        
                                                     </div>
+                                                   
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
@@ -66,7 +67,6 @@
                                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
                                                     </div>
                                                 </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
                                             </form>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                             <p class="text-primary m-0 fw-bold">Contact Settings</p>
                                         </div>
                                         <div class="card-body">
-                                            <form>
+                                            <form method="post" id="setprofile">
                                                 <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38" name="address"></div>
                                                 <div class="row">
                                                     <div class="col">
@@ -85,8 +85,7 @@
                                                         <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="USA" name="country"></div>
                                                     </div>
                                                 </div>
-                                                <div class="mb-3"><label class="form-label" for="vat"><strong>Vat Number</strong></label><input class="form-control" type="text" id="vat" placeholder="Vat Number" name="vat"></div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" id="submit">Save&nbsp;Settings</button></div>
                                             </form>
                                         </div>
                                     </div>

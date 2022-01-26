@@ -16,4 +16,8 @@ if(!empty($_POST['action']) && $_POST['action'] == 'updateProduct') {
 if(!empty($_POST['action']) && $_POST['action'] == 'prDelete') {
 	$emp->deleteProduct();
 }
+if(!empty($_POST['action']) && $_POST['action'] == 'prBuy') {
+	$emp->buyProduct();
+}
+
 ?>

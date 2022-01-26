@@ -1,5 +1,5 @@
 <?php
-require('db_connection.php');
+require('connection_catalog.php');
 class catalog extends dbSetup {	
     protected $hostNamep;
     protected $userNamep;
@@ -42,7 +42,7 @@ class catalog extends dbSetup {
 		return $numRows;
 	}   	
 	public function catalogList(){		
-		$sqlQuery = "SELECT * FROM ".$this->productTable." ";
+		$sqlQuery = "SELECT * FROM ".$this->productTable." ";       //this ritorna il valore globale di productTable che e 'product'
 		if(!empty($_POST["search"]["value"])){
 			$sqlQuery .= 'where(skuid LIKE "%'.$_POST["search"]["value"].'%" ';
 			$sqlQuery .= ' OR namep LIKE "%'.$_POST["search"]["value"].'%" ';
@@ -64,9 +64,9 @@ class catalog extends dbSetup {
 		$sqlQuery1 = "SELECT * FROM ".$this->productTable." ";
 		$result1 = mysqli_query($this->dbConnect, $sqlQuery1);
 		$numRows = mysqli_num_rows($result1);
-		$productData = array();	
+		$productData = array();	  //dichiaro productdata e un array
 		while( $product = mysqli_fetch_assoc($result) ) {		
-			$empRows = array();			
+			$empRows = array();			//dichiaro emprows un array
 			$empRows[] = ucfirst($product['namep']);
 			$empRows[] = $product['brand'];		
 			$empRows[] = $product['skuid'];	
@@ -75,13 +75,14 @@ class catalog extends dbSetup {
 			$empRows[] = '<button type="button" name="update" skuid="'.$product["skuid"].'" class="btn btn-warning btn-xs update">Update</button>';
 			$empRows[] = '<button type="button" name="delete" skuid="'.$product["skuid"].'" class="btn btn-danger btn-xs delete" >Delete</button>';
 			$empRows[] = '<button type="button" name="buy" 	  skuid="'.$product["skuid"].'" class="btn btn-success btn-xs buy" >Buy</button>';
-			$productData[] = $empRows;
+			$productData[] = $empRows;  //faccio un matrice
 		}
 		$output = array(
 			"draw"				=>	intval($_POST["draw"]),
 			"recordsTotal"  	=>  $numRows,
 			"recordsFiltered" 	=> 	$numRows,
-			"data"    			=> 	$productData
+			"data"    			=> 	$productData,
+	
 		);
 		echo json_encode($output);
 	}
@@ -116,9 +117,18 @@ class catalog extends dbSetup {
 	
 	}
 	public function deleteProduct(){
+		
 		if($_POST["skuid"]) {
-			$sqlDelete = "DELETE FROM ".$this->productTable."WHERE skuid = '".$_POST["skuid"]."'";
-			smysqli_query($this->dbConnect, $sqlDelete);		
+			$updateQuery = "UPDATE ".$this->productTable." SET qty = 0 WHERE skuid ='".$_POST["skuid"]."'";
+			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);	
+		}
+	}
+
+	public function buyProduct(){
+		if($_POST["skuid"]) {
+			$sku=$_POST["skuid"];
+			$_SESSION['cart'] = array();
+			array_push($_SESSION['cart'],$sku);
 		}
 	}
 }

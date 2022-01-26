@@ -1,11 +1,8 @@
 <?php
-
-    
-    include_once("db_connection.php");
+    include_once("connection_loreg.php");
     $conn=dbconnect();
     if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
         if (isset($_POST['submit'])) {
-            echo"OK";
             if (!empty($_POST['email']) && isset($_POST['password']) && isset($_POST['vat_number']) && isset($_POST['firstname']) && isset($_POST['lastname'])){
                 echo"ENTER";
                 $firstname = $_POST['firstname'];

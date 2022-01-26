@@ -1,11 +1,10 @@
 
 
 <html>
-
-<body class="bg-gradient-primary">
 <?php include("lib/resource.php")?>
-<script src="../js/register.js" type="text/javascript"></script>
-
+<script src="../js/library/jquery.validator-1.19.js"></script>
+<script src="../js/printget.js" type="text/javascript"></script>
+<body class="bg-gradient-primary">
     <div class="container">
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
@@ -45,5 +44,5 @@
     </div>
     
 </body>
-
+<script src="../js/register.js" type="text/javascript"></script>
 </html>

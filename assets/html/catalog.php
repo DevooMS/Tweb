@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-
+  <?php include "lib/top.php"; ?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <script src="../js/library/jquery-3.6.0.js"></script>
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">

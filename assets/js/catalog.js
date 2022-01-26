@@ -1,8 +1,15 @@
 $(document).ready(function() {
-	$('#example').DataTable( {
-		"pagingType": "full_numbers"
-	} );
-} );
+	console.log("THIS");
+		$.ajax({
+			url:'../php/action_catalog.php',
+			method:"POST",
+			dataType:"json",
+			success:function(data){
+				console.log("Parser"+JSON.parse(data.utype));
+				
+			}
+		})
+});
 $(document).ready(function(){	
 	var listData = $('#catalogList').DataTable({
 		"lengthChange": false,       //serve per controllare la paginazione
@@ -10,7 +17,7 @@ $(document).ready(function(){
 		"serverSide":true,         //serve a dire che i dati sono presi da lato server
 		"order":[],				 //serve dire che non e ordinato ma viene caricato i dati da come e stato fato il fetch
 		"ajax":{
-			url:"../php/action.php",
+			url:"../php/action_catalog.php",
 			type:"POST",
 			data:{action:'listCatalog'},
 			dataType:"json"
@@ -27,7 +34,7 @@ $(document).ready(function(){
 	$('#addProduct').click(function(){
 		$('#productModal').modal('show');
 		$('#productForm')[0].reset();
-		$('.modal-title').html("<i class='fa fa-plus'></i> Add product");
+		$('.modal-title').html("<i></i> Add product");
 		$('#action').val('addProduct');
 		$('#save').val('Add');
 	});	
@@ -35,22 +42,23 @@ $(document).ready(function(){
 
 	
 
-	$("#catalogList").on('click', '.update', function(){
-		var skuid = $(this).attr("skuid");           //ritorna il valore di skuid con this        
+	$("#catalogList").on('click', '.update', function(){  
+		var skuid = $(this).attr("skuid");                 //ritorna il valore di skuid con this dove this lo prende da cataloglist  e skuid e nome attributo   
 		var action = 'getProduct';
 		$.ajax({
-			url:'../php/action.php',
+			url:'../php/action_catalog.php',
 			method:"POST",
 			data:{skuid:skuid, action:action},
 			dataType:"json",
-			success:function(data){
+			success:function(data,utype){
 				$('#productModal').modal('show');
 				$('#nmproduct').val(data.namep);
 				$('#brand').val(data.brand);
 				$('#skuid').val(data.skuid);
 				$('#qty').val(data.qty);				
-				$('#cost').val(data.cost);	
-				$('.modal-title').html("<i class='fa fa-plus'></i> Edit product");
+				$('#cost').val(data.cost);
+				console.log("THISN"+JSON.stringify(utype));
+				$('.modal-title').html("<i></i> Edit product");
 				$('#action').val('updateProduct');
 				$('#save').val('Save');
 				document.getElementById('skuid').readOnly = true;
@@ -58,13 +66,13 @@ $(document).ready(function(){
 		})
 	});
 	$("#productModal").on('submit','#productForm', function(event){
-		event.preventDefault();
+		event.preventDefault();       //interrompe l'esecuzione dell'azione predefinita di un elemento, in questo caso invio di un form
 		$('#save').attr('disabled','disabled');
-		var formData = $(this).serialize();
+		var formData = $(this).serialize();   //prende i dati dal form e lo serializza tutti con & data1 & data2.
 		$.ajax({
-			url:"../php/action.php",
+			url:"../php/action_catalog.php",
 			method:"POST",
-			data:formData,
+			data:formDatax,
 			success:function(data){				
 				$('#productForm')[0].reset();
 				$('#productModal').modal('hide');				
@@ -80,13 +88,13 @@ $(document).ready(function(){
 	$("#catalogList").on('click', '.delete', function(){
 		var skuid = $(this).attr("skuid");		
 		var action = "prDelete";
-		$('.modal-msgtill').html("<i class='fa fa-plus'></i> Delete Product");
-		$('.modal-msg').html("<i class='fa fa-plus'></i> Are you sure to delete this product ? ");
+		$('.modal-msgtill').html("<i></i> Delete Product");
+		$('.modal-msg').html("<i></i> Are you sure to delete this product ? ");
 		$('#deleteModal').modal('show');
 		
 		$( "#deletbtn" ).on( "click", function() {
 				$.ajax({
-					url:"../php/action.php",
+					url:"../php/action_catalog.php",
 					method:"POST",
 					data:{skuid:skuid, action:action},
 					success:function(data) {					
@@ -98,32 +106,36 @@ $(document).ready(function(){
 	});	
 
 	$("#catalogList").on('click', '.buy', function(){
-		var skuid = $(this).attr("skuid");		
+		var skuid = $(this).attr("skuid");	
 		var action = "prBuy";
 		console.log("THIS");
 		$('#deleteModal').modal('show');
 		$('#deletbtn').hide();
-		$('.modal-msgtill').html("<i class='fa fa-plus'></i> Buy Product");
-		$('.modal-msg').html("<i class='fa fa-plus'></i> Added to cart ");
+		$('.modal-msgtill').html("<i></i> Buy Product");
+		$('.modal-msg').html("<i></i> Added to cart ");
 		
 		setTimeout(function() {$('#deleteModal').modal('hide');}, 1000);
-
-		/*if(confirm("Are you sure you want to delete this product?")) {
-			$.ajax({
-				url:"action.php",
-				method:"POST",
-				data:{skuid:skuid, action:action},
-				success:function(data) {					
-					listData.ajax.reload();
+		$.ajax({
+			url:"../php/action_catalog.php",
+			method:"POST",
+			data:{skuid:skuid, action:action},
+			success:function(data) {					
+				$('#action').val('buyProduct');		
 				}
 			})
-		} else {
-			return false;
-		}*/
+		
 	});
 	$(".closebtn").on('click', function(){
 		$('#deleteModal').modal('hide');
 		$('#productModal').modal('hide');
+		
 	});
+
+	function type(){
+		$('#catalogList').DataTable( {
+			"columnDefs": [ {"targets": [ 6,7 ],"visible": false,},]
+		});
+		$('#addProduct').hide();
+	}
 
 });

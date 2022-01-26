@@ -16,14 +16,12 @@ if (isset($_SESSION["unsuccessful"])) {
     print "\"isSet\": true, \n";
     print "  \"unsuccessful\": \"".$_SESSION["unsuccessful"]."\" \n}\n";
     unset($_SESSION["unsuccessful"]);
-    session_unset();
     //unset($_SESSION["unsuccessful"]);
 }else if (isset($_SESSION["successfully"])) {
     print "{\n";
     print "\"isSet\": true, \n";
     print "  \"successfully\": \"".$_SESSION["successfully"]."\" \n}\n";
     unset($_SESSION["successfully"]);
-    session_unset();
     //unset($_SESSION["successfully"]);
 }else{print "{\n";
       print "\"unset\"\n}\n";}
