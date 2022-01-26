@@ -68,11 +68,11 @@ $(document).ready(function(){
 	$("#productModal").on('submit','#productForm', function(event){
 		event.preventDefault();       //interrompe l'esecuzione dell'azione predefinita di un elemento, in questo caso invio di un form
 		$('#save').attr('disabled','disabled');
-		var formData = $(this).serialize();   //prende i dati dal form e lo serializza tutti con & data1 & data2.
+		var formData = $(this).serialize();   //prende i dati dal form e lo serializza tutti con & data1 & data2. e vengono presi poi da post
 		$.ajax({
 			url:"../php/action_catalog.php",
 			method:"POST",
-			data:formDatax,
+			data:formData,
 			success:function(data){				
 				$('#productForm')[0].reset();
 				$('#productModal').modal('hide');				

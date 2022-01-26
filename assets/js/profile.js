@@ -29,7 +29,7 @@ $(document).ready(function() {
             url:'../php/action_profile.php',
          method:"POST",
             dataType:"json",
-            data:{action:action,formData,email},
+            data:formData,
             success:function(data){
             console.log(data.email);
                    // $('#address').val(data.address);				
