@@ -1,16 +1,7 @@
-$(document).ready(function() {
-	console.log("THIS");
-		$.ajax({
-			url:'../php/action_catalog.php',
-			method:"POST",
-			dataType:"json",
-			success:function(data){
-				console.log("Parser"+JSON.parse(data.utype));
-				
-			}
-		})
-});
-$(document).ready(function(){	
+
+$(document).ready(function(){
+	
+	
 	var listData = $('#catalogList').DataTable({
 		"lengthChange": false,       //serve per controllare la paginazione
 		//"processing":true,        //serve per controllare se e riuscito a conettersi 
@@ -30,6 +21,22 @@ $(document).ready(function(){
 		],
 		"pageLength": 10      //quanti tuple posso vedere singola volte
 	});		
+
+	console.log("THISS");
+	$.ajax({
+		url:'../php/access.php',
+		method:"POST",
+		dataType:"json",
+		success:function(data){
+			if(data.logged){
+				if(data.utype=='admin'){
+				}else{
+					listData.columns([5,6]).visible(false);
+				}
+				console.log(data.utype);
+			}
+		}
+	})
 
 	$('#addProduct').click(function(){
 		$('#productModal').modal('show');

@@ -50,7 +50,6 @@ class profile extends dbSetup {
 	public function updateProfile(){
         
 		if($_POST['email']) {
-            $test=$this->dbConnect;
             $address=mysqli_real_escape_string($this->dbConnect,$_POST['address']);
             $city=mysqli_real_escape_string($this->dbConnect,$_POST['city']);
             $country=mysqli_real_escape_string($this->dbConnect,$_POST['country']);

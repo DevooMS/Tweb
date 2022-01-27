@@ -43,15 +43,20 @@ class catalog extends dbSetup {
 	}   	
 	public function catalogList(){		
 		$sqlQuery = "SELECT * FROM ".$this->productTable." ";       //this ritorna il valore globale di productTable che e 'product'
-		if(!empty($_POST["search"]["value"])){
-			$sqlQuery .= 'where(skuid LIKE "%'.$_POST["search"]["value"].'%" ';
-			$sqlQuery .= ' OR namep LIKE "%'.$_POST["search"]["value"].'%" ';
-			$sqlQuery .= ' OR brand LIKE "%'.$_POST["search"]["value"].'%") ';				
-			$sqlQuery .= ' OR cost LIKE "%'.$_POST["search"]["value"].'%" ';
-			$sqlQuery .= ' OR qty LIKE "%'.$_POST["search"]["value"].'%" ';
+		$stQuerry=$this->dbConnect->real_escape_string($_POST["search"]["value"]);
+		if(!empty($stQuerry)){
+			$sqlQuery .= 'where(skuid LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
+			$sqlQuery .= 'OR namep LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
+			$sqlQuery .= 'OR brand LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%") ';
+			$sqlQuery .= 'OR cost LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
+			$sqlQuery .= 'OR qty LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
 		}
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
-		
+		if($result === false)
+		{
+		echo "ERROR: " . $this->dbConnect->error . "<br />\n";
+		echo "QUERY: " . $sqlQuery;
+		}
 		$sqlQuery1 = "SELECT * FROM ".$this->productTable." ";
 		$result1 = mysqli_query($this->dbConnect, $sqlQuery1);
 		$numRows = mysqli_num_rows($result1);
@@ -81,27 +86,41 @@ class catalog extends dbSetup {
 
 	public function getProduct(){
 		if($_POST["skuid"]) {
-			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$_POST["skuid"]."'";
+			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 			$result = mysqli_query($this->dbConnect, $sqlQuery);	
-			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$row = mysqli_fetch_array($result, MYSQLI_ASSOC); //Recupera la riga successiva di un set di risultati come array associativo, numerico o entrambi
 			echo json_encode($row);
 		}
 	}
 	public function updateProduct(){
+	
 		if($_POST['skuid']) {	
+			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+			$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
+			$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
+			$qty=$this->dbConnect->real_escape_string($_POST["qty"]);
+			$cost=$this->dbConnect->real_escape_string($_POST["cost"]);
+
 			$updateQuery = "UPDATE ".$this->productTable." 
-			SET namep = '".$_POST["nmproduct"]."', brand = '".$_POST["brand"]."', skuid = '".$_POST["skuid"]."', qty = '".$_POST["qty"]."' , cost = '".$_POST["cost"]."'
-			WHERE skuid ='".$_POST["skuid"]."'";
+			SET namep = '".$nmproduct."', brand = '".$brand."', skuid = '".$skuid."', qty = '".$qty."' , cost = '".$cost."'
+			WHERE skuid ='".$skuid."'";
 			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);		
 		}	
 	}
 	public function addProduct(){
-			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$_POST["skuid"]."'";
+			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+			$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
+			$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
+			$qty=$this->dbConnect->real_escape_string($_POST["qty"]);
+			$cost=$this->dbConnect->real_escape_string($_POST["cost"]);
+
+			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 			$result = mysqli_query($this->dbConnect, $sqlQuery);	
 			$isValidsku = mysqli_num_rows($result);
 		if($isValidsku==0){
 			$insertQuery = "INSERT INTO ".$this->productTable." (namep, brand, skuid, qty, cost) 
-			VALUES ('".$_POST["nmproduct"]."', '".$_POST["brand"]."', '".$_POST["skuid"]."', '".$_POST["qty"]."', '".$_POST["cost"]."')";
+			VALUES ('".$nmproduct."', '".$brand."', '".$skuid."', '".$qty."', '".$cost."')";
 			$isUpdated = mysqli_query($this->dbConnect, $insertQuery);	
 			//$setError=false;
 		}
@@ -110,7 +129,9 @@ class catalog extends dbSetup {
 	public function deleteProduct(){
 		
 		if($_POST["skuid"]) {
-			$updateQuery = "UPDATE ".$this->productTable." SET qty = 0 WHERE skuid ='".$_POST["skuid"]."'";
+			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+
+			$updateQuery = "UPDATE ".$this->productTable." SET qty = 0 WHERE skuid ='".$skuid."'";
 			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);	
 		}
 	}
