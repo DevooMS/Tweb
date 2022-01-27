@@ -22,25 +22,7 @@ class catalog extends dbSetup {
             }
         }
     }
-	private function getData($sqlQuery) {
-		$result = mysqli_query($this->dbConnect, $sqlQuery);
-		if(!$result){
-			die('Error in query: '. mysqli_error());
-		}
-		$data= array();
-		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-			$data[]=$row;            
-		}
-		return $data;
-	}
-	private function getNumRows($sqlQuery) {
-		$result = mysqli_query($this->dbConnect, $sqlQuery);
-		if(!$result){
-			die('Error in query: '. mysqli_error());
-		}
-		$numRows = mysqli_num_rows($result);
-		return $numRows;
-	}   	
+ 	
 	public function catalogList(){		
 		$sqlQuery = "SELECT * FROM ".$this->productTable." ";       //this ritorna il valore globale di productTable che e 'product'
 		$stQuerry=$this->dbConnect->real_escape_string($_POST["search"]["value"]);
@@ -94,21 +76,24 @@ class catalog extends dbSetup {
 		}
 	}
 	public function updateProduct(){
-	
-		if($_POST['skuid']) {	
-			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
-			$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
-			$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
-			$qty=$this->dbConnect->real_escape_string($_POST["qty"]);
-			$cost=$this->dbConnect->real_escape_string($_POST["cost"]);
+		if ($_SESSION["type"] == "admin") {	
+			if($_POST['skuid']) {	
+				$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+				$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
+				$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
+				$qty=$this->dbConnect->real_escape_string($_POST["qty"]);
+				$cost=$this->dbConnect->real_escape_string($_POST["cost"]);
 
-			$updateQuery = "UPDATE ".$this->productTable." 
-			SET namep = '".$nmproduct."', brand = '".$brand."', skuid = '".$skuid."', qty = '".$qty."' , cost = '".$cost."'
-			WHERE skuid ='".$skuid."'";
-			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);		
-		}	
+				$updateQuery = "UPDATE ".$this->productTable." 
+				SET namep = '".$nmproduct."', brand = '".$brand."', skuid = '".$skuid."', qty = '".$qty."' , cost = '".$cost."'
+				WHERE skuid ='".$skuid."'";
+				$isUpdated = mysqli_query($this->dbConnect, $updateQuery);		
+			}	
+		}else{die();}	
 	}
 	public function addProduct(){
+		if ($_SESSION["type"] == "admin") {	
+		
 			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
 			$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
 			$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
@@ -118,30 +103,64 @@ class catalog extends dbSetup {
 			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 			$result = mysqli_query($this->dbConnect, $sqlQuery);	
 			$isValidsku = mysqli_num_rows($result);
-		if($isValidsku==0){
-			$insertQuery = "INSERT INTO ".$this->productTable." (namep, brand, skuid, qty, cost) 
-			VALUES ('".$nmproduct."', '".$brand."', '".$skuid."', '".$qty."', '".$cost."')";
-			$isUpdated = mysqli_query($this->dbConnect, $insertQuery);	
-			//$setError=false;
-		}
-	
+			if($isValidsku==0){
+				$insertQuery = "INSERT INTO ".$this->productTable." (namep, brand, skuid, qty, cost) 
+				VALUES ('".$nmproduct."', '".$brand."', '".$skuid."', '".$qty."', '".$cost."')";
+				$isUpdated = mysqli_query($this->dbConnect, $insertQuery);	
+				//$setError=false;
+			}
+		}else{die();}
 	}
 	public function deleteProduct(){
-		
-		if($_POST["skuid"]) {
-			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+		if ($_SESSION["type"] == "admin") {	
+			if($_POST["skuid"]) {
+				$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
 
-			$updateQuery = "UPDATE ".$this->productTable." SET qty = 0 WHERE skuid ='".$skuid."'";
-			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);	
-		}
+				$updateQuery = "UPDATE ".$this->productTable." SET qty = 0 WHERE skuid ='".$skuid."'";
+				$isUpdated = mysqli_query($this->dbConnect, $updateQuery);	
+			}
+		}else{die();}
 	}
 
 	public function buyProduct(){
-		if($_POST["skuid"]) {
-			$sku=$_POST["skuid"];
-			$_SESSION['cart'] = array();
-			array_push($_SESSION['cart'],$sku);
-		}
+		$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+
+		$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
+		$result = mysqli_query($this->dbConnect, $sqlQuery);	
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC); //Recupera la riga successiva di un set di risultati come array associativo, numerico o entrambi
+		
+		$name = ucfirst($row['namep']);
+		$brand = $row['brand'];		
+		$id = $row['skuid'];	
+		$qty= $row ['qty'];
+		$cost = $row['cost'];
+		if(isset($_SESSION["shopping_cart"])) {  
+
+			$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");  
+			if(!in_array($id, $item_array_id))  {  
+  
+				 $count = count($_SESSION["shopping_cart"]);  
+				 $item_array = array(  
+					  'item_id'       =>     $id,  
+					  'item_name'     =>     $name,  
+					  'item_price'    =>     $cost,  
+					  'item_quantity' =>     $qty  
+				 );  
+				 $_SESSION["shopping_cart"][$count] = $item_array;  
+			} else {  
+  
+				 echo "Item Already Added";  
+				 
+			}  
+	   } else {  
+			$item_array = array(  
+				'item_id'       =>     $id,  
+				'item_name'     =>     $name,  
+				'item_price'    =>     $cost,  
+				'item_quantity' =>     $qty  
+			);  
+			$_SESSION["shopping_cart"][0] = $item_array;  
+	   } 
 	}
 }
 ?>

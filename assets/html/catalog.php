@@ -63,10 +63,10 @@
                           <label for="skuid" class="control-label">Sku Id</label> <input type="text" class="form-control" id="skuid" name="skuid" placeholder="Sku Id" required="">
                         </div>
                         <div class="form-group">
-                          <label for="address" class="control-label">Quantity</label> <input type="number" class="form-control" id="qty" name="qty" placeholder="Quantity" required="">
+                          <label for="qty" class="control-label">Quantity</label> <input type="number" class="form-control" id="qty" name="qty" placeholder="Quantity" required="">
                         </div>
                         <div class="form-group">
-                          <label for="lastname" class="control-label">Cost</label> <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost" required="">
+                          <label for="cost" class="control-label">Cost</label> <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost" required="">
                         </div>
                       </div>
                       <div class="modal-footer">

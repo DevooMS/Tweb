@@ -21,7 +21,7 @@
           <a class="nav-link" href="http://localhost/Tweb/assets/html/catalog.php">Catalog</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" >Cart</a>
+          <a class="nav-link" href='http://localhost/Tweb/assets/html/cart.php'>Cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Orders</a>

@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap.min.css" />
   <link rel="stylesheet" href="../css/theme.css">
   <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <script src="../js/cart.js"></script>
   <title>Cart - Yuna</title>
 </head>
 
@@ -44,7 +43,7 @@
         <td data-th="Subtotal" class="text-center">$5.11</td>
         <td class="actions" data-th="">
           <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-          <button class="btn btn-danger btn-sm" id='deletecart'><i class="fa fa-trash-o"></i></button>
+          <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
         </td>
       </tr>
     </tbody>

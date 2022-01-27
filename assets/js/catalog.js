@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	
 	
@@ -22,7 +21,6 @@ $(document).ready(function(){
 		"pageLength": 10      //quanti tuple posso vedere singola volte
 	});		
 
-	console.log("THISS");
 	$.ajax({
 		url:'../php/access.php',
 		method:"POST",
@@ -30,7 +28,9 @@ $(document).ready(function(){
 		success:function(data){
 			if(data.logged){
 				if(data.utype=='admin'){
+					$('#addProduct').show();
 				}else{
+					$('#addProduct').hide();
 					listData.columns([5,6]).visible(false);
 				}
 				console.log(data.utype);
@@ -137,12 +137,5 @@ $(document).ready(function(){
 		$('#productModal').modal('hide');
 		
 	});
-
-	function type(){
-		$('#catalogList').DataTable( {
-			"columnDefs": [ {"targets": [ 6,7 ],"visible": false,},]
-		});
-		$('#addProduct').hide();
-	}
 
 });
