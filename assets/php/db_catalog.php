@@ -49,16 +49,7 @@ class catalog extends dbSetup {
 			$sqlQuery .= ' OR brand LIKE "%'.$_POST["search"]["value"].'%") ';				
 			$sqlQuery .= ' OR cost LIKE "%'.$_POST["search"]["value"].'%" ';
 			$sqlQuery .= ' OR qty LIKE "%'.$_POST["search"]["value"].'%" ';
-					
 		}
-		if(!empty($_POST["order"])){
-			$sqlQuery .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
-		} else {
-			$sqlQuery .= 'ORDER BY skuid DESC ';
-		}
-		if($_POST["length"] != -1){
-			$sqlQuery .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-		}	
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		
 		$sqlQuery1 = "SELECT * FROM ".$this->productTable." ";

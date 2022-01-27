@@ -23,7 +23,7 @@ function printFlash(json) {
             $("#phpmsg").show();
             $("#phpmsg").css('color', 'green');
             $("#phpmsg").text(json.successfully); //stampo il messaggio passato dalla sessione unsuccessful
-            window.location.replace("http://localhost/Tweb/assets/html/catalog.php");
+            window.location.replace("http://localhost/Tweb/assets/html/profile.php");
         }
     } else {
         $("#phpmsg").hide();

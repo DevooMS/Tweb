@@ -6,7 +6,6 @@ $(document).ready(function() {
         dataType:"json",
         data:{action:action},
         success:function(data){
-        console.log(data.email);
                 $('#email').val(data.email);
                 $('#vat').val(data.vat_number);
                 $('#first_name').val(data.firstname);
@@ -14,14 +13,29 @@ $(document).ready(function() {
                 $('#address').val(data.address);				
                 $('#city').val(data.city);
                 $('#country').val(data.country);  
-                
+                if(data.type='admin'){
+                    $('#profileimg').attr("src", "../img/avatars/admin.png");
+                }else{
+                    $('#profileimg').attr("src", "../img/avatars/user.png");
+                }  
+                    if(data.confirm==1){
+                        $('#submit').hide();
+                        $("#address").attr("disabled", "disabled"); 
+                        $("#city").attr("disabled", "disabled"); 
+                        $("#country").attr("disabled", "disabled"); 
+                    }else{
+                        $('#submit').show();
+                        $("#address").removeAttr("disabled"); 
+                        $("#city").removeAttr("disabled"); 
+                        $("#country").removeAttr("disabled"); 
+                       
+                    }
                 }
             })
 
     $("#setprofile").on('submit',function(){
-        var action = 'updateProfile'
-        var email = $("#email").val();
-        console.log("TS"+email);
+        $("#actionhid").val('updateProfile');
+        $('#emailhid').val($("#email").val());
         event.preventDefault(); 
         var formData = $(this).serialize();
         console.log(formData);

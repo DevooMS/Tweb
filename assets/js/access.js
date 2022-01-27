@@ -9,7 +9,6 @@ $(document).ready(function() {
 					if(data.utype=='admin'){
 						$('#top').show();
 					}else{
-						
 						$('#top').hide();
 					}
 					console.log(data.utype)

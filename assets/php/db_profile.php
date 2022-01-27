@@ -26,6 +26,7 @@ class profile extends dbSetup {
 
 
 	public function getProfile(){
+        $type=$_SESSION['type'];
         $user=$_SESSION["user"];
 		$sqlQuery1 = "SELECT * FROM ".$this->profileTable." WHERE email = '".$user."'";
 		$result1 = mysqli_query($this->dbConnect, $sqlQuery1);
@@ -39,31 +40,24 @@ class profile extends dbSetup {
 			'address'=>$profile['address'],
             'city'=>$profile['city'],
             'country'=>$profile['country'],
-            );  //faccio un matrice
+            'confirm'=>$profile['confirm'],
+            'type'=>$type,
+            ); 
 		}
 		echo json_encode($empRows);
 	}
 
 	public function updateProfile(){
         
-		if($_POST['email']) {	
+		if($_POST['email']) {
             $test=$this->dbConnect;
-            $address=mysqli_real_escape_string($test,$_POST['address']);
-            echo $address;
+            $address=mysqli_real_escape_string($this->dbConnect,$_POST['address']);
             $city=mysqli_real_escape_string($this->dbConnect,$_POST['city']);
             $country=mysqli_real_escape_string($this->dbConnect,$_POST['country']);
+            $email=mysqli_real_escape_string($this->dbConnect,$_POST['email']);
             $updateQuery = "UPDATE ".$this->profileTable." 
-			SET address = '". $address."', city = '".$city."' , country = '".$country."'
-			WHERE skuid ='".$_POST["email"]."'";
+			SET confirm = '1',address = '".$address."', city = '".$city."' , country = '".$country."'WHERE email ='".$email."'";
 			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);
-
-          /*
-          $updateQuery = "UPDATE ".$this->profileTable." 
-          SET namep = address = '".$_POST["address"]."', city = '".$_POST["city"]."' , country = '".$_POST["country"]."'
-          WHERE skuid ='".$_POST["email"]."'";
-          $isUpdated = mysqli_query($this->dbConnect, $updateQuery);
-            */
-			
 		}	
 	}
 

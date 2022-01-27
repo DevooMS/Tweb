@@ -6,5 +6,6 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getProfile') {
 }
 if(!empty($_POST['action']) && $_POST['action'] == 'updateProfile') {
 	$emp->updateProfile();
+
 }
 ?>
