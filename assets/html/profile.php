@@ -22,7 +22,6 @@
                                 <div class="card-body text-center shadow"><img id="profileimg"class="rounded-circle mb-3 mt-4"width="160" height="160">
                                 </div>
                             </div>
-                        
                         </div>
                         <div class="col-lg-8">
                             <div class="row">
@@ -37,9 +36,7 @@
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email" readonly></div>
                                                         <div class="mb-3"><label class="form-label" for="vat"><strong>Vat Number</strong></label><input class="form-control" type="text" id="vat" placeholder="Vat Number" name="vat" readonly></div>
-                                                        
                                                     </div>
-                                                   
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
