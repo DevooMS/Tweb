@@ -10,7 +10,10 @@
   /*background-image:linear-gradient(180deg, #4e73df 10%, #224abe 100%);*/
   background-size:cover
 }
-
+/* colore dei errori */
+.error {    
+  color: red;
+}
 /**********/
 .navbar {
   background-color: #0d49fd;

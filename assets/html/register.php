@@ -42,7 +42,6 @@
             </div>
         </div>
     </div>
-    
 </body>
 <script src="../js/register.js" type="text/javascript"></script>
 </html>

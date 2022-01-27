@@ -87,8 +87,21 @@ $().ready(function() {
                         lastname: thislasname,
                     },
                     dataType: 'json',
+                    success:function(data){
+                        if(data.register==true){
+                            $("#phpmsg").show();
+                            $("#phpmsg").css('color', 'green');
+                            $("#phpmsg").text(data.status);
+                            var delay = 2000; 
+                            setTimeout(function(){ window.location = 'http://localhost/Tweb/assets/html/login.php'; }, delay);
+                        }else{
+                            console.log("THIS");
+                            $("#phpmsg").show();
+                            $("#phpmsg").css('color', 'red');
+                            $("#phpmsg").text(data.status);
+                        }
+                    }
                 });
-                //printthis();
             });
         }
     });
