@@ -18,13 +18,12 @@
 
 <body id="page-top">
   <div id="wrapper">
-    <div class="d-flex flex-column" id="content-wrapper">
-      <div id="content">
+    <div class="d-flex flex-column mt-5" id="content-wrapper">
+      <div id="content ">
         <div class="container-fluid">
-          <h3 class="text-dark mb-4">Catalog</h3>
           <div class="card shadow">
             <div class="card-header py-3">
-              <p class="text-primary mt-1 fw-bold float-start">Item List</p>
+              <p class="text-primary mt-1 fw-bold float-start">Catalog List</p>
 			  <button type="button" name="add" id="addProduct" class="btn btn-success btn-xs float-end">Add Product</button>
               
             </div>

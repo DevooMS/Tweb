@@ -115,22 +115,35 @@ $(document).ready(function(){
 	$("#catalogList").on('click', '.buy', function(){
 		var skuid = $(this).attr("skuid");	
 		var action = "prBuy";
-		console.log("THIS");
 		$('#deleteModal').modal('show');
 		$('#deletbtn').hide();
-		$('.modal-msgtill').html("<i></i> Buy Product");
-		$('.modal-msg').html("<i></i> Added to cart ");
-		
 		setTimeout(function() {$('#deleteModal').modal('hide');}, 1000);
 		$.ajax({
 			url:"../php/action_catalog.php",
 			method:"POST",
+			dataType:"json",
 			data:{skuid:skuid, action:action},
-			success:function(data) {					
-				$('#action').val('buyProduct');		
+			success:function(data) {		
+				console.log(data.cart)
+				
+				$('#deleteModal').modal('show');
+				$('#deletbtn').hide();
+				if(data.cart==0){
+				$('.modal-msgtill').html("<i></i> Buy Product");
+				$('.modal-msg').html("<i></i> Added to cart ");
+				}else if(data.cart==1){
+					$('.modal-msgtill').html("<i></i> Error");
+					$('.modal-msg').html("<i></i> You already added this product ");
+				}else if(data.cart==2){
+					$('.modal-msgtill').html("<i></i> Error");
+					$('.modal-msg').html("<i></i> This product its not avaliable ");
 				}
-			})
-		
+			
+			},
+			
+		})
+
+
 	});
 	$(".closebtn").on('click', function(){
 		$('#deleteModal').modal('hide');

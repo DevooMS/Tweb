@@ -1,16 +1,22 @@
 <?php
 include('db_cart.php');
+$emp = new cart();
 if(!empty($_POST['action']) && $_POST['action'] == 'getCart') {
-	getCart();
-}
-if(!empty($_POST['action']) && $_POST['action'] == 'updateCart') {
-	updateCart();
-}
-if(!empty($_POST['action']) && $_POST['action'] == 'deleteCart') {
-	deleteCart();
-}
-if(!empty($_POST['action']) && $_POST['action'] == 'buyCart') {
-	buyCart();
+	$output='';
+    $emp->getCart($output);
 }
 
+if(!empty($_GET['action']) && $_GET['action'] == 'deleteCart') {
+    $skuid=$_POST['skuid'];
+	$emp->deleteCart($skuid);
+}
+if(!empty($_POST['action']) && $_POST['action'] == 'cleanCart') {
+	$emp->clearCart();
+}
+if(!empty($_POST['action']) && $_POST['action'] == 'buyCart') {
+	$emp->buyCart();
+}
+if(!empty($_POST['action']) && $_POST['action'] == 'fetchCart') {
+	$emp->fetchCart();
+}
 ?>

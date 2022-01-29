@@ -8,8 +8,10 @@ $(document).ready(function() {
 				if(data.logged){
 					if(data.utype=='admin'){
 						$('#top').show();
+						
 					}else{
 						$('#top').hide();
+						
 					}
 					console.log(data.utype)
 				}else{window.location.replace("http://localhost/Tweb/index.html");}

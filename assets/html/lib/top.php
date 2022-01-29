@@ -14,7 +14,7 @@
   </section>
   <nav class="navbar navbar-expand-md navbar-default" id="banner">
     <div class="container-fluid float-start">
-      <a class="navbar-brand" href="#">Yuna Wholesale</a> <!-- Navbar links -->
+      <a class="navbar-brand" href="http://localhost/Tweb/assets/html/catalog.php">Yuna Wholesale</a> <!-- Navbar links -->
       <div class="collapse navbar-collapse position-absolute top-0 end-0" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">

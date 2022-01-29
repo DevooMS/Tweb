@@ -56,7 +56,7 @@ class catalog extends dbSetup {
 			$productData[] = $empRows;  //faccio un matrice
 		}
 		$output = array(
-			"draw"				=>	intval($_POST["draw"]),
+			"draw"				=>	intval($_POST["draw"]),//serve per aggiornare il table  descrizione da api di datatable
 			"recordsTotal"  	=>  $numRows,
 			"recordsFiltered" 	=> 	$numRows,
 			"data"    			=> 	$productData,
@@ -128,39 +128,60 @@ class catalog extends dbSetup {
 		$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 		$result = mysqli_query($this->dbConnect, $sqlQuery);	
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC); //Recupera la riga successiva di un set di risultati come array associativo, numerico o entrambi
-		
+		$status=0;
 		$name = ucfirst($row['namep']);
 		$brand = $row['brand'];		
-		$id = $row['skuid'];	
-		$qty= $row ['qty'];
+		$id = $row['skuid'];
+		$qtk = $row['qty'];
+		$qty= 1;
 		$cost = $row['cost'];
-		if(isset($_SESSION["shopping_cart"])) {  
+		if($qtk>0){
+			if(isset($_SESSION["cart"])) {  //verifico se e il carello e stato inizializzato se non lo e faccio else 
 
-			$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");  
-			if(!in_array($id, $item_array_id))  {  
-  
-				 $count = count($_SESSION["shopping_cart"]);  
-				 $item_array = array(  
-					  'item_id'       =>     $id,  
-					  'item_name'     =>     $name,  
-					  'item_price'    =>     $cost,  
-					  'item_quantity' =>     $qty  
-				 );  
-				 $_SESSION["shopping_cart"][$count] = $item_array;  
+					$item_array_id = array_column($_SESSION["cart"], "item_id");  
+					
+					if(!in_array($id, $item_array_id))  {  
+						$count = count($_SESSION["cart"]);  
+						$item_array = array(  
+							'item_id'       =>     $id,  
+							'item_name'     =>     $name,  
+							'item_price'    =>     $cost,  
+							'item_quantity' =>     $qty  
+						);  
+						$_SESSION["cart"][$count] = $item_array; //nella sessione cart in posizione count metto il mio item array
+						$out=array('cart'=>$status);
+						echo json_encode($out);
+					} else {  
+		
+						$out=array('cart'=>$status=1);
+						echo json_encode($out);
+						
+					}  
 			} else {  
-  
-				 echo "Item Already Added";  
-				 
-			}  
-	   } else {  
-			$item_array = array(  
-				'item_id'       =>     $id,  
-				'item_name'     =>     $name,  
-				'item_price'    =>     $cost,  
-				'item_quantity' =>     $qty  
-			);  
-			$_SESSION["shopping_cart"][0] = $item_array;  
-	   } 
+					$item_array = array(  
+						'item_name'     =>     $name,
+						'item_id'       =>     $id,  
+						'item_quantity' =>     $qty,   
+						'item_price'    =>     $cost,
+					);  
+					$_SESSION["cart"][0] = $item_array;
+					$out=array('cart'=>$status);
+						echo json_encode($out);  
+			}
+
+		}else{
+			$out=array('cart'=>$status=2);
+    		echo json_encode($out);
+		}
 	}
+
+
+
+
+
+
+
+
+
 }
 ?>

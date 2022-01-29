@@ -95,7 +95,6 @@ $().ready(function() {
                             var delay = 2000; 
                             setTimeout(function(){ window.location = 'http://localhost/Tweb/assets/html/login.php'; }, delay);
                         }else{
-                            console.log("THIS");
                             $("#phpmsg").show();
                             $("#phpmsg").css('color', 'red');
                             $("#phpmsg").text(data.status);
