@@ -94,6 +94,20 @@
      </div>
     </div>
   </div>
+  <div id="errorModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-msgtill"></h4><button type="button" class="closebtn btn-close" aria-label="Close"><span aria-hidden="true"></span></button>
+          </div>
+         <div class="modal-body">
+          <p class="modal-msg"></p>
+          </div>
+        <div class="modal-footer">
+       <button type="button" class="closebtn  btn btn-secondary" >Close</button>
+     </div>
+    </div>
+  </div>
  </div>
 </html>
 

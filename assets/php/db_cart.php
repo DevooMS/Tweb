@@ -34,7 +34,7 @@ class cart extends dbSetup {
                 $data[]=$values["item_quantity"];
                 $data[]=$values["item_price"];
                 $data[] = '<button type="button" name="delete" skuid="'.$values["item_id"].'" class="btn btn-danger btn-xs delete" >Delete</button>';
-        
+               
                 $productData[] = $data;
                 //echo json_encode($values);
             }  
@@ -66,18 +66,18 @@ class cart extends dbSetup {
     }
 
     function buyCart(){
-        // $accst=0; 
+         $accst=0; 
         // echo $_SESSION["cart"];
-         $end=sizeof($_POST["checkconfirm"]);
-         echo $end;
+         $end=sizeof($_POST["checkqty"]);
          $i=1;
-        foreach($_POST["checkconfirm"] as $keys => $values)   { 
+        foreach($_POST["checkqty"] as $keys => $values)   { 
          $skuid=$this->dbConnect->real_escape_string($values);
          $sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
          $result = mysqli_query($this->dbConnect, $sqlQuery);	
          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-         /*if($values["item_price"]==$row['cost']){  
+         $price=$_POST["checkprice"];
+         $cost=(array)($row['cost']);   //faccio cast oggetto to array
+         if($price != $cost ){ 
                 if($row['qty']>0) {
 
                     if($end==$i){ 
@@ -92,16 +92,16 @@ class cart extends dbSetup {
                     $i++;
                 }else{
                 
-                    $this->deleteCart($skuid);
+                    //$this->deleteCart($skuid);
 
                     $out=array('error'=>1);  //quantita non disponibile
                     echo json_encode($out);
                 }
             }else{
-                $this->deleteCart($skuid);   //prezzo aggiornato
+                //$this->deleteCart($skuid);   //prezzo aggiornato
                 $out=array('error'=>2);
                 echo json_encode($out);
-            }*/
+            }
             
         }  
     }

@@ -92,24 +92,30 @@ $(".closebtn").on('click', function(){
 
 
 $("#confirmbtn").on('click', function(){ 
+    $('#msgModal').modal('hide');
     var action='buyCart';
-    var checkconfirm = table.column(1).data().toArray();
+    var checkqty = table.column(2).data().toArray();
+    var checkprice = table.column(3).data().toArray();
     $.ajax({
         url:'../php/action_cart.php',
         method:"POST",
-        data:{action:action,checkconfirm:checkconfirm},
+        dataType:"json",
+        data:{action:action,checkqty:checkqty,checkprice:checkprice},
         success:function(data){
-            if(data.error==1){
-                $('#msgModal').modal('hide');
-                $('#msgModal').modal('show');
-                $('.modal-msgtill').html("<i></i> Error");
-                $('.modal-msg').html("<i></i> One or more items are no longer available in your cart");
-            }else if(data.error==2){
-                $('#msgModal').modal('hide');
-                $('#msgModal').modal('show');
-                $('.modal-msgtill').html("<i></i> Error");
-                $('.modal-msg').html("<i></i> The price has been updated item will be removed from your cart ");
-            }
+           
+            
+               
+                if(data.error==1){
+                    $('#errorModal').modal('show');
+                    $('.modal-msgtill').html("<i></i> Error");
+                    $('.modal-msg').html("<i></i> One or more items are no longer available in your cart");
+                }else if(data.error==2){
+                    console.log("this");
+                    $('#errorModal').modal('show');
+                    $('.modal-msgtill').html("<i></i> Error");
+                    $('.modal-msg').html("<i></i> The price has been updated item will be removed from your cart ");
+                }
+            
         }
     });
     
