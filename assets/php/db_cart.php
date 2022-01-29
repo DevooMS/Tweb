@@ -76,14 +76,15 @@ class cart extends dbSetup {
          $sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
          $result = mysqli_query($this->dbConnect, $sqlQuery);	
          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-         if($values["item_price"]==$row['price']){  
+
+         /*if($values["item_price"]==$row['cost']){  
                 if($row['qty']>0) {
 
                     if($end==$i){ 
                         //echo "its the end"; 
-                        $this->fetchCart(); 
-                        /*$out=array('fetch'=>true);
-                        echo json_encode($out);*/
+                        //$this->fetchCart(); 
+                        //$out=array('fetch'=>true);
+                        //echo json_encode($out);
                     exit();
                     }
                     echo $i;
@@ -97,10 +98,10 @@ class cart extends dbSetup {
                     echo json_encode($out);
                 }
             }else{
-                $this->deleteCart($skuid);
+                $this->deleteCart($skuid);   //prezzo aggiornato
                 $out=array('error'=>2);
                 echo json_encode($out);
-            }
+            }*/
             
         }  
     }
