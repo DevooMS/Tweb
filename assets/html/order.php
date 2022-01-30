@@ -7,9 +7,11 @@
       <script src="../js/library/jquery-3.6.0.js"></script>
       <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
       <link rel="stylesheet" href="../css/theme.css">
+      <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <script src="../bootstrap/js/bootstrap.min.js"></script>
-      <script src="../js/cart.js"></script>
       <script src="../js/library/jquery.dataTables.min.js"></script>
+      <script src="../js/cart.js"></script>
       <title>Cart - Yuna</title>
    </head>
    <body id="page-top">
@@ -21,25 +23,25 @@
                   <div class="col-sm">
                      <button class="btn btn-warning" id="makethis"> TEST</button>
                      <div>
-                        <p class="text-center"><b>Vendor</b></p>
-                        <p class="text-center m-0 ">Nome e Cognome</p>
-                        <p class="text-center m-0">Indirizzo e Citta e stato</p>
-                        <p class="text-center m-0">Vat Number</p>
+                        <p class="text-center"><b>Information:</b></p>
+                        <p class="text-center m-0 " id='n1'>Nome e Cognome</p>
+                        <p class="text-center m-0" id='n2'>Indirizzo e Citta e stato</p>
+                        <p class="text-center m-0" id='n3'>Vat Number</p>
                      </div>
                   </div>
                   <div class="col-sm row">
                      <div class="col-sm">
                         <p  class="m-0"><b>P.O. #:</b></p>
-                        <p><b>TEST</b></p>
+                        <p id='n5' ><b>Order Number</b></p>
                      </div>
                      <div class="col-sm">
                         <p  class="m-0"><b>Date Created</b></p>
-                        <p><b>DATA</b></p>
+                        <p  class="text-center" id='n6' ><b>Date</b></p>
                      </div>
                   </div>
                </div>
             </section>
-            <table id="example" class="table table-bordered table-striped" style="width:100%">
+            <table id="table" class="table table-bordered table-striped" style="width:100%">
                <thead>
                   <tr>
                      <th width="30%" class="text-center">Product Name</th>
@@ -73,4 +75,66 @@
       </div>
     </div>
    </body>
+   <!--modal msg-->
+   <div id="msgModal" class="modal fade">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h4 class="modal-msgtill"></h4>
+               <button type="button" class="closebtn btn-close" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            <div class="modal-body">
+               <p class="modal-msg"></p>
+            </div>
+            <div class="modal-footer">
+               <input type="hidden"> <button type="button" id="confirmbtn" class="btn btn-success">Confirm</button> <button type="button" class="closebtn  btn btn-secondary" >Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="errorModal" class="modal fade">
+    <!--modal error-->
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-errorModal"></h4>
+            <button type="button" class="closebtn btn-close" aria-label="Close"><span aria-hidden="true"></span></button>
+         </div>
+         <div class="modal-body">
+            <p class="modal-error"></p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="closebtn  btn btn-secondary" >Close</button>
+         </div>
+      </div>
+   </div>
+   <!--modal makeorder-->
+
+</div>
+<div id="okModal" class="modal fade" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+        <div class="modal-header justify-content-center">
+            <div class="icon-box">
+              <i class="material-icons"></i>
+            </div>
+        </div>
+			<div class="modal-body text-center">
+				<h4>Great!</h4>	
+				<p>your order has been successfully created.</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

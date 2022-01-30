@@ -5,11 +5,12 @@ $(document).ready(function(){
         dataType:"json",
         data:{action:'getProfile'},
         success:function(data){
-
+            
            $('#n1').html('<i></i> Name: '+data.firstname+' '+data.lastname +' ');
            $('#n2').html('<i></i> Address: '+data.address+' '+data.city +' '+data.country);
            $('#n3').html('<i></i> Vat Numer: '+data.vat_number+'');
-    
+           $('#n5').hide();
+           $('#n6').hide();
 
         }
     })
@@ -106,8 +107,6 @@ $(".closebtn").on('click', function(){
 
 
 $("#confirmbtn").on('click', function(){ 
-    //$('#msgModal').modal('hide');
-    
     var action='buyCart';
     var skuid = table.column(1).data().toArray();
     var checkprice = table.column(3).data().toArray();
@@ -125,7 +124,7 @@ $("#confirmbtn").on('click', function(){
     
 });
 function checkres(data){
-    console.log("testa"+data)
+    
     if(data.error>0){
         $('.modal-errorModal').html("<i></i> Error");
         if(data.error==1){
@@ -140,46 +139,53 @@ function checkres(data){
             $('#errorModal').modal('show');
         }
     }else{
-        console.log("theta");
+     
         $('#okModal').modal('show');
         table.columns([4]).visible(false);
         $('#checkout').hide();
-    
         makeorder();
     }
     
 }
 
 function makeorder(){
+
     var action='fetchCart';
-    var dt = new Date();
-    var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
     var confirm = table.column(1).data().toArray();
     $.ajax({
         url:'../php/action_cart.php',
         method:"POST",
-        data:{action:action,time:time,confirm:confirm},
-        success:function(data){
-            if(data.order){
-                
-                $("#n3").html('<strong>Total € '+ data.order + '</strong>');
-                $("#n4").html('<strong>Total € '+ time + '</strong>');
+        dataType:"json",
+        data:{action:action,confirm:confirm},
+        success: function(data){
+            if(data.order==true){
+                $("#n5").html('<strong>'+ data.id + '</strong>');
+                $("#n6").html('<strong>'+ data.time + '</strong>');
+                $('#n5').show();
+                $('#n6').show();
                 setTimeout(function() {$('#okModal').modal('hide');}, 1000);
                 cleanCart();
             }else{
                 $('.modal-error').html("<i></i> Order he is doing already exists");
                 $('#errorModal').modal('show');
                 setTimeout(function() {$('#errorModal').modal('hide');}, 3000);
-                //window.location.replace("http://localhost/Tweb/assets/html/catalog.php");
+                window.location.replace("http://localhost/Tweb/assets/html/catalog.php");
                 cleanCart();
             }
-        }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status);
+            alert(thrownError);
+          }
     });
-    //});
 }
 /*$("#makethis").on('click', function(){
     $('#okModal').modal('show');
-   // $('#errorModal').modal('show');
+    $("#n5").html('<strong>Total € '+ 'test' + '</strong>');
+    $("#n6").html('<strong>Total € '+ 'test1' + '</strong>');
+    $('#n5').show();
+    $('#n6').show();
+    setTimeout(function() {$('#okModal').modal('hide');}, 1000);
 });*/
 
 

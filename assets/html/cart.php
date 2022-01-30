@@ -21,7 +21,6 @@
             <section class="content  text-dark">
                <div class="row mb-2">
                   <div class="col-sm">
-                     <button class="btn btn-warning" id="makethis"> TEST</button>
                      <div>
                         <p class="text-center"><b>Information:</b></p>
                         <p class="text-center m-0 " id='n1'>Nome e Cognome</p>
@@ -32,11 +31,11 @@
                   <div class="col-sm row">
                      <div class="col-sm">
                         <p  class="m-0"><b>P.O. #:</b></p>
-                        <p id='n3' hidden><b>Order Number</b></p>
+                        <p id='n5' ><b>Order Number</b></p>
                      </div>
                      <div class="col-sm">
                         <p  class="m-0"><b>Date Created</b></p>
-                        <p  id='n4' hidden><b>Date</b></p>
+                        <p  id='n6' ><b>Date</b></p>
                      </div>
                   </div>
                </div>

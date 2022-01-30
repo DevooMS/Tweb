@@ -44,12 +44,14 @@ $(document).ready(function(){
 		$('.modal-title').html("<i></i> Add product");
 		$('#action').val('addProduct');
 		$('#save').val('Add');
+		document.getElementById('skuid').readOnly = false;
 	});	
 
 
 	
 
 	$("#catalogList").on('click', '.update', function(){  
+		
 		var skuid = $(this).attr("skuid");                 //ritorna il valore di skuid con this dove this lo prende da cataloglist  e skuid e nome attributo   
 		var action = 'getProduct';
 		$.ajax({

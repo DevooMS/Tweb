@@ -65,7 +65,7 @@
                           <label for="qty" class="control-label">Quantity</label> <input type="number" class="form-control" id="qty" name="qty" placeholder="Quantity" required="">
                         </div>
                         <div class="form-group">
-                          <label for="cost" class="control-label">Cost</label> <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost" required="">
+                          <label for="cost" class="control-label">Cost</label> <input type="number" step="0.01" class="form-control" id="cost" name="cost" placeholder="Cost" required="">
                         </div>
                       </div>
                       <div class="modal-footer">

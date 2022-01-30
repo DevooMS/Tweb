@@ -42,7 +42,6 @@ class cart extends dbSetup {
             "data"=> $productData,
             );
             echo json_encode($output);
-            return($output);
         }else{
             echo "error";
 
@@ -80,8 +79,7 @@ class cart extends dbSetup {
                     if($row['qty']>0){
                         
                         if($end==$i){ 
-                            //echo "its the end"; 
-                            //$this->fetchCart(); 
+                         
                             $out=array('error'=>0);
                             echo json_encode($out);
                         exit();
@@ -89,13 +87,12 @@ class cart extends dbSetup {
                         $i++;
                     }else{
                     
-                        //$this->deleteCart($skuid);
 
                         $out=array('error'=>1);  //quantita non disponibile
                         echo json_encode($out);
                     }
             }else{
-             //$this->deleteCart($skuid);   //prezzo aggiornato
+        
             $out=array('error'=>2);
             echo json_encode($out);
             }
@@ -110,33 +107,37 @@ class cart extends dbSetup {
     function fetchCart(){
         $output='';
         $total=0;
-        $data=($this->getCart($output));
-        $time=$this->dbConnect->real_escape_string($_POST["time"]);
+        $content=json_encode($_SESSION['cart']);
+        $time=date("G:i:s");
         $email=$this->dbConnect->real_escape_string($_SESSION["user"]);
         $address=json_encode($_SESSION["info"]);
-        $id=uniqid($time);
+        $id=uniqid(date("Gis"));
         $status='pending';
         foreach($_POST["confirm"] as $keys => $values)   { 
             $skuid=$this->dbConnect->real_escape_string($values);
-            $updateQuery = "UPDATE ".$this->productTable."SET  qty = qty-1 WHERE skuid ='".$skuid."'";
+            $updateQuery = "UPDATE ".$this->productTable." SET  qty = qty-1 WHERE skuid ='".$skuid."'";
             $sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
-            $result = mysqli_query($this->dbConnect, $sqlQuery);
+            $result = mysqli_query($this->dbConnect,$updateQuery);
+            $result = mysqli_query($this->dbConnect,$sqlQuery);
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $total= $total+$row['cost'];
         } 
         
-        $sqlQuery = "SELECT * FROM ".$this->cartTable." WHERE id = '".$id."'";
+        $sqlQuery = " SELECT * FROM ".$this->cartTable." WHERE id = '".$id."'";
         $result = mysqli_query($this->dbConnect, $sqlQuery);	
         $uid = mysqli_num_rows($result);
+        
         if($uid==0){
-            $insertQuery = "INSERT INTO ".$this->cartTable." (id, email, time, data, total, status, address) 
-            VALUES ('".$id."', '".$email."', '".$data."','".$time."', '".$total."', '".$status."', '".$address."')";
+            $insertQuery = "INSERT INTO ".$this->cartTable." (id, email, time, content, total, status, address) 
+            VALUES ('".$id."', '".$email."', '".$time."','".$content."', '".$total."', '".$status."', '".$address."')";
             $isUpdated = mysqli_query($this->dbConnect, $insertQuery);	
-            $out=array('order'=>'true',$id);
+            $out=array('order'=>true,'id'=>$id,'time'=>$time);
+            echo json_encode($out);
+        }else{
+            $out=array('order'=>false);
             echo json_encode($out);
         }
-        $out=array('order'=>'false');
-        echo json_encode($out);
+      
 
 
     }
