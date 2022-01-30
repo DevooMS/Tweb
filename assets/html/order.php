@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <?php include "lib/top.php"; ?>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <script src="../js/library/jquery-3.6.0.js"></script>
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/theme.css">
-  <script src="../bootstrap/js/bootstrap.min.js"></script>
-  <title>Cart - Yuna</title>
-</head>
-
-<body id="page-top">
-<div class="container">
-  <table id="cart" class="table table-hover table-condensed">
-    <thead>
-      <tr>
-        <th style="width:50%">Product</th>
-        <th style="width:10%">Price</th>
-        <th style="width:8%">Quantity</th>
-        <th style="width:22%" class="text-center">Subtotal</th>
-        <th style="width:10%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-th="Product">
-          <div class="row">
-            <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive" /></div>
-            <div class="col-sm-10">
-              <h4 class="nomargin">Product 1</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-        </td>
-        <td data-th="Price">$5.11</td>
-        <td data-th="Quantity">
-          <input type="number" class="form-control text-center" value="1">
-        </td>
-        <td data-th="Subtotal" class="text-center">$5.11</td>
-        <td class="actions" data-th="">
-          <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-          <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-        </td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr class="visible-xs">
-        <td class="text-center"><strong>Total $ 5.11</strong></td>
-      </tr>
-      <tr>
-        <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-        <td colspan="2" class="hidden-xs"></td>
-        <td class="hidden-xs text-center"><strong>Total $ 5.11</strong></td>
-        <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-</body>
+   <?php include "lib/top.php"; ?>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <script src="../js/library/jquery-3.6.0.js"></script>
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/theme.css">
+      <script src="../bootstrap/js/bootstrap.min.js"></script>
+      <script src="../js/cart.js"></script>
+      <script src="../js/library/jquery.dataTables.min.js"></script>
+      <title>Cart - Yuna</title>
+   </head>
+   <body id="page-top">
+      <div class="container mt-5">
+         <div class="card">
+            <h5 class="card-header">Cart</h5>
+            <section class="content  text-dark">
+               <div class="row mb-2">
+                  <div class="col-sm">
+                     <button class="btn btn-warning" id="makethis"> TEST</button>
+                     <div>
+                        <p class="text-center"><b>Vendor</b></p>
+                        <p class="text-center m-0 ">Nome e Cognome</p>
+                        <p class="text-center m-0">Indirizzo e Citta e stato</p>
+                        <p class="text-center m-0">Vat Number</p>
+                     </div>
+                  </div>
+                  <div class="col-sm row">
+                     <div class="col-sm">
+                        <p  class="m-0"><b>P.O. #:</b></p>
+                        <p><b>TEST</b></p>
+                     </div>
+                     <div class="col-sm">
+                        <p  class="m-0"><b>Date Created</b></p>
+                        <p><b>DATA</b></p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <table id="example" class="table table-bordered table-striped" style="width:100%">
+               <thead>
+                  <tr>
+                     <th width="30%" class="text-center">Product Name</th>
+                     <th width="10%" class="text-center">Sku</th>
+                     <th width="20%" class="text-center">Quantity</th>
+                     <th width="15%" class="text-center">Cost</th>
+                     <th width="5%"  class="text-center">Action</th>
+                  </tr>
+               </thead>
+               <tfoot>
+                  <tr>
+                     <th width="30%" class="text-center">Product Name</th>
+                     <th width="10%" class="text-center">Sku</th>
+                     <th width="20%" class="text-center">Quantity</th>
+                     <th width="15%" class="text-center">Cost</th>
+                     <th width="5%"  class="text-center">Action</th>
+                  </tr>
+               </tfoot>
+            </table>
+            <table id="cart" class="table table-striped">
+               <tfoot>
+                  <tr>
+                     <td><a href="http://localhost/Tweb/assets/html/catalog.php" class="btn btn-warning float-start"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                     <td colspan="2" class="hidden-xs"></td>
+                     <td class="hidden-xs absolute start-0" id='total'></td>
+                     <td><a href="#" class="btn btn-success btn-block float-end" id='checkout'>Checkout <i class="fa fa-angle-right"></i></a></td>
+                  </tr>
+               </tfoot>
+            </table>
+         </div>
+      </div>
+    </div>
+   </body>
 </html>

@@ -44,6 +44,7 @@ class profile extends dbSetup {
             'type'=>$type,
             ); 
 		}
+        $_SESSION["info"]=$empRows;
 		echo json_encode($empRows);
 	}
 
