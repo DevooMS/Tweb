@@ -1,8 +1,6 @@
 <?php
 
-if (!isset($_SESSION)) {
-    session_start();
-}
+if(!isset($_SESSION)) {session_start();}
 $host = "localhost";
 $dbUsername = "root";
 $dbPassword = "";

@@ -1,35 +1,33 @@
 $(document).ready(function(){
-
-    var table= $('#table').DataTable( {
-         "paging":   false,
-         "ordering": false,
-         "info":     false,
-         "searching":   false,
-         "ajax":{
-             url:"../php/db_orders.php",
-             type:"POST",
-             data:{action:'getOrders'},
-             dataType:"json",
-         },
-         language: {                                                         
-             loadingRecords: " ",
-             zeroRecords: " "
-         },
-         "columnDefs": [{"className": "dt-center", "targets": "_all"} ],//per centrare la tabella
-         "pageLength": 10                 
-     
-     });
+    function maketable(data){
+        var table= $('#table').DataTable( {
+            "paging":   false,
+            "ordering": false,
+            "info":     false,
+            "searching":   false,
+            "ajax":{
+                //url:"../php/db_details.php",
+                //type:"POST",
+                data:data,//{action:'getDetails'},
+                //dataType:"json",
+            },
+            language: {                                                         
+                loadingRecords: " ",
+                zeroRecords: " "
+            },
+            "columnDefs": [{"className": "dt-center", "targets": "_all"} ],//per centrare la tabella
+            "pageLength": 10                 
+        
+        });
+    }
+    
  
      $.ajax({
-         url:'../php/access.php',
+         url:'../php/db_details.php',
          method:"POST",
          dataType:"json",
          success:function(data){
-             if(data.logged){
-                 if(data.utype!='admin'){
-                     table.columns([6]).visible(false);
-                 }
-             }
+             maketable(data);
          }
      })
  
@@ -43,14 +41,14 @@ $(document).ready(function(){
                  method:"GET",
                  data:{id:id, action:action},
                  success:function(data){
-                     window.location.replace("http://localhost/Tweb/assets/html/order_details.php");
+                     //window.location.replace("http://localhost/Tweb/assets/html/order_details.php");
                  }
              })
      
      
- });	*/
+ });
  
- /*$("#table").on('click', '.confirm', function(){
+ $("#table").on('click', '.confirm', function(){
      var id = $(this).attr("id");		
      console.log(id)
      var action = "confirmOrders";

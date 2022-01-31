@@ -5,7 +5,6 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getCart') {
 	$output='';
     $emp->getCart($output);
 }
-
 if(!empty($_GET['action']) && $_GET['action'] == 'deleteCart') {
     $skuid=$_POST['skuid'];
 	$emp->deleteCart($skuid);

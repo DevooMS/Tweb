@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {session_start();}
 $accst=false;
 if(isset($_SESSION['user'])){
     $out=array('utype'=>$_SESSION['type'],'logged'=>$accst=true);

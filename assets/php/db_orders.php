@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {session_start();}
 require('connection_catalog.php');
 
 class orders extends dbSetup{	
@@ -98,6 +98,7 @@ class orders extends dbSetup{
 
 
     function fetchOrders(){
+        echo"n1";
         $id=$this->dbConnect->real_escape_string($_GET["id"]);
         $sqlQuery = "SELECT * FROM ".$this->ordersTable." WHERE id = '".$id."'";
         $result = mysqli_query($this->dbConnect, $sqlQuery);

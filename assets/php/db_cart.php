@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION)) {session_start();}
 require('connection_catalog.php');
 class cart extends dbSetup {	
     protected $hostNamep;

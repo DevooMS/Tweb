@@ -36,15 +36,14 @@ $(document).ready(function(){
 
 
 $("#table").on('click', '.details', function(){
-
     var id = $(this).attr("id");		
     var action = "fetchOrders";
             $.ajax({
-                url:"../php/action_cart.php",
+                url:"../php/action_orders.php",
                 method:"GET",
                 data:{id:id, action:action},
                 success:function(data){
-                    window.location.replace("http://localhost/Tweb/assets/html/order_details.php");
+                   window.location.replace("http://localhost/Tweb/assets/html/order_details.php");
                 }
             })
     
