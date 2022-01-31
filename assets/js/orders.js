@@ -1,72 +1,68 @@
 $(document).ready(function(){
-    $.ajax({
-        url:"../php/action_profile.php",
-        method:"POST",
-        dataType:"json",
-        data:{action:'getProfile'},
-        success:function(data){
-            
-           $('#n1').html('<i></i> Name: '+data.firstname+' '+data.lastname +' ');
-           $('#n2').html('<i></i> Address: '+data.address+' '+data.city +' '+data.country);
-           $('#n3').html('<i></i> Vat Numer: '+data.vat_number+'');
-           $('#n5').hide();
-           $('#n6').hide();
-
-        }
-    })
+  
 
    var table= $('#table').DataTable( {
         "paging":   false,
         "ordering": false,
         "info":     false,
-        //"searching":   false,
+        "searching":   false,
         "ajax":{
-			url:"../php/action_cart.php",
+			url:"../php/action_orders.php",
 			type:"POST",
-			data:{action:'getCart'},
+			data:{action:'getOrders'},
 			dataType:"json",
 		},
         language: {                                                         
-            loadingRecords: "The Cart its Empty!",
-            zeroRecords: "All items its removed "
+            loadingRecords: " ",
+            zeroRecords: " "
         },
         "columnDefs": [{"className": "dt-center", "targets": "_all"} ],     //per centrare la tabella
-        "footerCallback": function ( row, data, start, end, display ) {    //per fare la somma del totale metodo datatable
-            var api = this.api(), data;
- 
-            // converting to interger to find total
-            var intVal = function ( i ) {
-                return typeof i === 'string' ? 
-                i.replace(/[\$,]/g, '')*1 :
-                    typeof i === 'number' ?
-                        i : 0;
-            };
-            var total = api
-            .column(3)
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-            console.log("thisn"+total);
-            $("#total").html('<strong>Total € '+ total + '</strong>');
-        }
     
     });
-  
+
+    $.ajax({
+		url:'../php/access.php',
+		method:"POST",
+		dataType:"json",
+		success:function(data){
+			if(data.logged){
+				if(data.utype!='admin'){
+                    table.columns([6]).visible(false);
+				}
+			}
+		}
+	})
 
 
-$("#table").on('click', '.delete', function(){
-    table.row( $(this).parents('tr') ).remove().draw();
-    var skuid = $(this).attr("skuid");		
-    var action = "deleteCart";
+$("#table").on('click', '.details', function(){
+
+    //var id = $(this).attr("id");		
+   /* var action = "deleteCart";
             $.ajax({
                 url:"../php/action_cart.php",
                 method:"GET",
-                data:{skuid:skuid, action:action},
+                data:{id:id, action:action},
                 success:function(data){table.ajax.reload()}
                 
             })
+    */
+    
+});	
 
+$("#table").on('click', '.confirm', function(){
+    var id = $(this).attr("id");		
+    console.log(id)
+    var action = "confirmOrders";
+            $.ajax({
+                url:"../php/action_orders.php",
+                method:"GET",
+                data:{id:id, action:action},
+                success:function(data){
+                    table.ajax.reload()
+                }
+                
+            })
+    
     
 });	
 

@@ -7,7 +7,7 @@
         <div class="pull-right ml-3"> 
             <li>
                 <a href="#" class="admin"><i class="fas fa-address-card">ADMIN</i></a>
-                <a href="#" class="admin"><i >ORDINI</i></a>
+                <a href="http://localhost/Tweb/assets/html/orders.php" class="admin"><i >ORDINI</i></a>
             </li> 
         </div>
     </ul>
@@ -24,7 +24,7 @@
           <a class="nav-link" href='http://localhost/Tweb/assets/html/cart.php'>Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Orders</a>
+            <a class="nav-link" href="http://localhost/Tweb/assets/html/orders.php">Orders</a>
           </li><!-- Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Others</a>

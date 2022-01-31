@@ -12,8 +12,8 @@ $(document).ready(function() {
                 $('#last_name').val(data.lastname);
                 $('#address').val(data.address);				
                 $('#city').val(data.city);
-                $('#country').val(data.country);  
-                if(data.type='admin'){
+                $('#country').val(data.country);
+                if(data.type=='admin'){
                     $('#profileimg').attr("src", "../img/avatars/admin.png");
                 }else{
                     $('#profileimg').attr("src", "../img/avatars/user.png");

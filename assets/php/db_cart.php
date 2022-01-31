@@ -27,12 +27,13 @@ class cart extends dbSetup {
  	
     function getCart($out){
         if(isset($_SESSION["cart"])){
-            foreach($_SESSION["cart"] as $keys => $values){
+            foreach($_SESSION["cart"] as $keys => $values){  //$array index content
                 $data=array();
                 $data[]=$values["item_name"];
                 $data[]=$values["item_id"];
                 $data[]=$values["item_quantity"];
                 $data[]=$values["item_price"];
+                //var_dump($values);
                 $data[] = '<button type="button" name="delete" skuid="'.$values["item_id"].'" class="btn btn-danger btn-xs delete" >Delete</button>';
                
                 $productData[] = $data;
