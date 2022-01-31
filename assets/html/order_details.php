@@ -11,13 +11,13 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <script src="../bootstrap/js/bootstrap.min.js"></script>
       <script src="../js/library/jquery.dataTables.min.js"></script>
-      <script src="../js/cart.js"></script>
-      <title>Cart - Yuna</title>
+      <script src="../js/details.js"></script>
+      <title>Order Details - Yuna</title>
    </head>
    <body id="page-top">
       <div class="container mt-5">
          <div class="card">
-            <h5 class="card-header">Cart</h5>
+            <h5 class="card-header">Order Details</h5>
             <section class="content  text-dark">
                <div class="row mb-2">
                   <div class="col-sm">
@@ -63,10 +63,9 @@
             <table id="cart" class="table table-striped">
                <tfoot>
                   <tr>
-                     <td><a href="http://localhost/Tweb/assets/html/catalog.php" class="btn btn-warning float-start"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                     <td><a href="http://localhost/Tweb/assets/html/orders.php" class="btn btn-warning float-start"><i class="fa fa-angle-left"></i> Back to history</a></td>
                      <td colspan="2" class="hidden-xs"></td>
                      <td class="hidden-xs absolute start-0" id='total'></td>
-                     <td><a href="#" class="btn btn-success btn-block float-end" id='checkout'>Checkout <i class="fa fa-angle-right"></i></a></td>
                   </tr>
                </tfoot>
             </table>
@@ -92,37 +91,5 @@
       </div>
    </div>
    <div id="errorModal" class="modal fade">
-    <!--modal error-->
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h4 class="modal-errorModal"></h4>
-            <button type="button" class="closebtn btn-close" aria-label="Close"><span aria-hidden="true"></span></button>
-         </div>
-         <div class="modal-body">
-            <p class="modal-error"></p>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="closebtn  btn btn-secondary" >Close</button>
-         </div>
-      </div>
-   </div>
-   <!--modal makeorder-->
-
-</div>
-<div id="okModal" class="modal fade" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-        <div class="modal-header justify-content-center">
-            <div class="icon-box">
-              <i class="material-icons"></i>
-            </div>
-        </div>
-			<div class="modal-body text-center">
-				<h4>Great!</h4>	
-				<p>your order has been successfully created.</p>
-			</div>
-		</div>
-	</div>
 
 </html>

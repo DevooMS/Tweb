@@ -6,14 +6,10 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getOrders') {
 }
 
 if(!empty($_GET['action']) && $_GET['action'] == 'confirmOrders') {
-	echo"i";
 	$emp->confirmOrders();
 }
 
-if(!empty($_POST['action']) && $_POST['action'] == 'buyCart') {
-	$emp->buyCart();
-}
-if(!empty($_POST['action']) && $_POST['action'] == 'fetchCart') {
+if(!empty($_GET['action']) && $_GET['action'] == 'fetchCart') {
 	$emp->fetchCart();
 }
 ?>
