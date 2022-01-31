@@ -18,9 +18,7 @@
       <div class="container mt-5">
          <div class="card">
             <h5 class="card-header">Orders History</h5>
-            <div id="catalogList_filter" class="dataTables_filter">
-               <input type="search" class="form-control text-center" placeholder="Search" aria-controls="catalogList">
-            </div>
+    
             <table id="table" class="table" style="width:100%">
                <thead class="table-dark">
                   <tr>

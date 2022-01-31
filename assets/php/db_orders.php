@@ -33,7 +33,6 @@ class orders extends dbSetup{
             if($_SESSION['type']=='admin'){
                 $sqlQuery = "SELECT * FROM ".$this->ordersTable."";
                 $result = mysqli_query($this->dbConnect, $sqlQuery);
-
                 $rowcount=mysqli_num_rows($result);
                 for($i=1;$rowcount>=$i;$i++){
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -55,8 +54,6 @@ class orders extends dbSetup{
                 "data"=> $productData,
                 );
                 echo json_encode($output);
-            
-            
             }else{
                 $sqlQuery = "SELECT * FROM ".$this->ordersTable." WHERE email = '".$email."'";
                 $result = mysqli_query($this->dbConnect, $sqlQuery);
@@ -74,28 +71,22 @@ class orders extends dbSetup{
                    
                     $productData[] = $data;
                 }
+                
                 $output = array(
                 "data"=> $productData,
                 );
                 echo json_encode($output);
                 
             }
-            $sqlQuery = "SELECT * FROM ".$this->ordersTable." "; 
-            $stQuerry=$this->dbConnect->real_escape_string($_POST["search"]["value"]);
-            if(!empty($stQuerry)){
-                $sqlQuery .= 'where(id LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
-                $sqlQuery .= 'OR email LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%") ';
-                $sqlQuery .= 'OR total LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
-                $sqlQuery .= 'OR status LIKE "%'.$this->dbConnect->real_escape_string($_POST["search"]["value"]).'%" ';
-            }
-        }else{exit();}
+            
+        
+        }else{
+            exit();
+        }
     }
 
 
-    
-
     function confirmOrders(){
-        echo"n";
         if($_SESSION['type']=='admin'){
             $id=$this->dbConnect->real_escape_string($_GET["id"]);
             $updateQuery = "UPDATE ".$this->ordersTable." SET status = 'delivered' WHERE id ='".$id."'";

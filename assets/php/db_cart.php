@@ -33,11 +33,9 @@ class cart extends dbSetup {
                 $data[]=$values["item_id"];
                 $data[]=$values["item_quantity"];
                 $data[]=$values["item_price"];
-                //var_dump($values);
                 $data[] = '<button type="button" name="delete" skuid="'.$values["item_id"].'" class="btn btn-danger btn-xs delete" >Delete</button>';
                
                 $productData[] = $data;
-                //echo json_encode($values);
             }  
             $output = array(
             "data"=> $productData,

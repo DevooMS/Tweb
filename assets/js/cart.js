@@ -19,7 +19,7 @@ $(document).ready(function(){
         "paging":   false,
         "ordering": false,
         "info":     false,
-        //"searching":   false,
+        "searching":   false,
         "ajax":{
 			url:"../php/action_cart.php",
 			type:"POST",

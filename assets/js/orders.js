@@ -16,7 +16,8 @@ $(document).ready(function(){
             loadingRecords: " ",
             zeroRecords: " "
         },
-        "columnDefs": [{"className": "dt-center", "targets": "_all"} ],     //per centrare la tabella
+        "columnDefs": [{"className": "dt-center", "targets": "_all"} ],//per centrare la tabella
+        "pageLength": 10                 
     
     });
 
