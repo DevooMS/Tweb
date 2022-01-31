@@ -300,3 +300,43 @@ body {
   display: inline-block;
   margin: 100px auto;
 }
+
+.features-icons {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+.text-center {
+    text-align: center !important;
+}
+
+section {
+    display: block;
+}
+body {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+element.style {
+  background: url(assets/img/bg.jpg)no-repeat center center;
+  background-size: cover;
+}
+
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+
