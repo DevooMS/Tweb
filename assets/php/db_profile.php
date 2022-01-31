@@ -49,15 +49,16 @@ class profile extends dbSetup {
 	}
 
 	public function updateProfile(){
-        
-		if($_POST['email']) {
-            $address=mysqli_real_escape_string($this->dbConnect,$_POST['address']);
-            $city=mysqli_real_escape_string($this->dbConnect,$_POST['city']);
-            $country=mysqli_real_escape_string($this->dbConnect,$_POST['country']);
-            $email=mysqli_real_escape_string($this->dbConnect,$_POST['email']);
+		if($_GET['email']) {
+            $address=mysqli_real_escape_string($this->dbConnect,$_GET['address']);
+            $city=mysqli_real_escape_string($this->dbConnect,$_GET['city']);
+            $country=mysqli_real_escape_string($this->dbConnect,$_GET['country']);
+            $email=mysqli_real_escape_string($this->dbConnect,$_GET['email']);
             $updateQuery = "UPDATE ".$this->profileTable." 
 			SET confirm = '1',address = '".$address."', city = '".$city."' , country = '".$country."'WHERE email ='".$email."'";
 			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);
+            $out=array('status'=>'true');
+            echo json_encode($out);
 		}	
 	}
 

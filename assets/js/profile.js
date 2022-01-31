@@ -34,24 +34,20 @@ $(document).ready(function() {
         console.log(formData);
         $.ajax({
             url:'../php/action_profile.php',
-         method:"POST",
+         method:"GET",
             dataType:"json",
             data:formData,
-            success:function(data){
-            console.log(data.email);
-                   // $('#address').val(data.address);				
-                    //$('#city').val(data.city);
-                   // $('#country').val(data.country);  
-            }
          })
     
     });
 
     $('#submit').on('click',function(){
-            $("#address").attr("disabled", "disabled"); 
-            $("#city").attr("disabled", "disabled"); 
-            $("#country").attr("disabled", "disabled"); 
-     });
+        setTimeout(function (){
+        $("#address").attr("disabled", "disabled"); 
+        $("#city").attr("disabled", "disabled"); 
+        $("#country").attr("disabled", "disabled"); 
+        }, 200);
+    });
 });
 
 
