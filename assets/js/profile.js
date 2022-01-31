@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $('#submit').show();
+    $("#address").removeAttr("disabled"); 
+    $("#city").removeAttr("disabled"); 
+    $("#country").removeAttr("disabled"); 
 	var action = 'getProfile';	
     $.ajax({
         url:'../php/action_profile.php',
@@ -18,20 +22,9 @@ $(document).ready(function() {
                 }else{
                     $('#profileimg').attr("src", "../img/avatars/user.png");
                 }  
-                    if(data.confirm==1){
-                        $('#submit').hide();
-                        $("#address").attr("disabled", "disabled"); 
-                        $("#city").attr("disabled", "disabled"); 
-                        $("#country").attr("disabled", "disabled"); 
-                    }else{
-                        $('#submit').show();
-                        $("#address").removeAttr("disabled"); 
-                        $("#city").removeAttr("disabled"); 
-                        $("#country").removeAttr("disabled"); 
-                       
-                    }
+                 
                 }
-            })
+    })
 
     $("#setprofile").on('submit',function(){
         $("#actionhid").val('updateProfile');
@@ -53,6 +46,12 @@ $(document).ready(function() {
          })
     
     });
+
+    $('#submit').on('click',function(){
+            $("#address").attr("disabled", "disabled"); 
+            $("#city").attr("disabled", "disabled"); 
+            $("#country").attr("disabled", "disabled"); 
+     });
 });
 
 

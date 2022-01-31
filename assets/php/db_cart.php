@@ -107,10 +107,10 @@ class cart extends dbSetup {
         $output='';
         $total=0;
         $content=json_encode($_SESSION['cart']);
-        $time=date("G:i:s");
+        $time=date(" h-i-s G:i:s");
         $email=$this->dbConnect->real_escape_string($_SESSION["user"]);
         $address=json_encode($_SESSION["info"]);
-        $id=uniqid(date("Gis"));
+        $id=uniqid(date("Gi"));
         $status='pending';
         foreach($_POST["confirm"] as $keys => $values)   { 
             $skuid=$this->dbConnect->real_escape_string($values);

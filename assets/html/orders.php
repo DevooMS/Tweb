@@ -4,12 +4,8 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <script src="../js/library/jquery-3.6.0.js"></script>
-      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-      <link rel="stylesheet" href="../css/theme.css">
-      <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <script src="../bootstrap/js/bootstrap.min.js"></script>
       <script src="../js/library/jquery.dataTables.min.js"></script>
       <script src="../js/orders.js"></script>
       <title>Cart - Yuna</title>

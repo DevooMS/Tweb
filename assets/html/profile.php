@@ -19,7 +19,7 @@
                     <div class="row mb-3">
                         <div class="col-lg-4">
                             <div class="card mb-3">
-                                <div class="card-body text-center shadow"><img id="profileimg"class="rounded-circle mb-3 mt-4"width="160" height="160">
+                                <div class="card-body text-center shadow"><img id="profileimg" class="rounded-circle mb-3 mt-4" width="160" height="160"></img>
                                 </div>
                             </div>
                         </div>

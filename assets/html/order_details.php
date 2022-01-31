@@ -4,19 +4,16 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <script src="../js/library/jquery-3.6.0.js"></script>
-      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-      <link rel="stylesheet" href="../css/theme.css">
-      <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" >
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <script src="../bootstrap/js/bootstrap.min.js"></script>
       <script src="../js/library/jquery.dataTables.min.js"></script>
+      <script src="../js/library/jquery.printarea.js"></script>
       <script src="../js/details.js"></script>
       <title>Order Details - Yuna</title>
    </head>
    <body id="page-top">
       <div class="container mt-5">
-         <div class="card">
+         <div class="card PrintArea">
             <h5 class="card-header">Order Details</h5>
             <section class="content  text-dark">
                <div class="row mb-2">
@@ -31,11 +28,15 @@
                   <div class="col-sm row">
                      <div class="col-sm">
                         <p  class="m-0"><b>P.O. #:</b></p>
-                        <p id='n5' ><b>Order Number</b></p>
+                        <p id='n5'><b>Order Number</b></p>
                      </div>
                      <div class="col-sm">
                         <p  class="m-0"><b>Date Created</b></p>
                         <p  id='n6' ><b>Date</b></p>
+                     </div>
+                     <div class="col-sm">
+                        <p  class="m-0"><b>Total €</b></p>
+                        <p  id='n7' ><b>Total</b></p>
                      </div>
                   </div>
                </div>
@@ -47,7 +48,7 @@
                      <th width="10%" class="text-center">Sku</th>
                      <th width="20%" class="text-center">Quantity</th>
                      <th width="15%" class="text-center">Cost</th>
-                     <th width="5%"  class="text-center">Action</th>
+                 
                   </tr>
                </thead>
                <tfoot>
@@ -56,22 +57,24 @@
                      <th width="10%" class="text-center">Sku</th>
                      <th width="20%" class="text-center">Quantity</th>
                      <th width="15%" class="text-center">Cost</th>
-                     <th width="5%"  class="text-center">Action</th>
+        
                   </tr>
                </tfoot>
             </table>
+         </div>
+      </div>
+      <div class="container mt-5">
             <table id="cart" class="table table-striped">
                <tfoot>
                   <tr>
                      <td><a href="http://localhost/Tweb/assets/html/orders.php" class="btn btn-warning float-start"><i class="fa fa-angle-left"></i> Back to history</a></td>
                      <td colspan="2" class="hidden-xs"></td>
                      <td class="hidden-xs absolute start-0" id='total'></td>
+                     <td><a href="#" class="btn btn-success btn-block float-end" id="print">Print Invoice <i class="fa fa-print"></i></a></td>
                   </tr>
                </tfoot>
             </table>
-         </div>
       </div>
-    </div>
    </body>
    <!--modal msg-->
    <div id="msgModal" class="modal fade">
@@ -90,6 +93,5 @@
          </div>
       </div>
    </div>
-   <div id="errorModal" class="modal fade">
-
+   </div>
 </html>

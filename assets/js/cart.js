@@ -179,14 +179,4 @@ function makeorder(){
           }
     });
 }
-/*$("#makethis").on('click', function(){
-    $('#okModal').modal('show');
-    $("#n5").html('<strong>Total € '+ 'test' + '</strong>');
-    $("#n6").html('<strong>Total € '+ 'test1' + '</strong>');
-    $('#n5').show();
-    $('#n6').show();
-    setTimeout(function() {$('#okModal').modal('hide');}, 1000);
-});*/
-
-
 });

@@ -1,72 +1,51 @@
 $(document).ready(function(){
-    function maketable(data){
-        var table= $('#table').DataTable( {
+        //$('#n5').show();
+        //$('#n6').show();
+        $('#table').DataTable( {
             "paging":   false,
             "ordering": false,
             "info":     false,
             "searching":   false,
-            "ajax":{
-                //url:"../php/db_details.php",
-                //type:"POST",
-                data:data,//{action:'getDetails'},
-                //dataType:"json",
+            "ajax": {
+                "url":"../php/db_details.php", 
+                "dataSrc": function (data) {
+                    $('#n1').html('<i></i> Name: '+data.firstname+' '+data.lastname +' ');
+                    $('#n2').html('<i></i> Address: '+data.address+' '+data.city +' '+data.country);
+                    $('#n3').html('<i></i> Vat Numer: '+data.vat_number+'');
+                    $("#n5").html('<strong>'+ data.id + '</strong>');
+                    $("#n6").html('<strong>'+ data.time + '</strong>');
+                    $("#n7").html('<strong>'+ data.total + '</strong>');
+
+
+
+
+                    return data.data;
+                }
             },
             language: {                                                         
                 loadingRecords: " ",
                 zeroRecords: " "
             },
             "columnDefs": [{"className": "dt-center", "targets": "_all"} ],//per centrare la tabella
-            "pageLength": 10                 
-        
+            "pageLength": 10       
         });
-    }
-    
+
  
-     $.ajax({
+     /*$.ajax({
          url:'../php/db_details.php',
          method:"POST",
+         data:{action:"getBill"},
          dataType:"json",
          success:function(data){
-             maketable(data);
+            $("#n5").html('<strong>Total € '+ 'test' + '</strong>');
+            $("#n6").html('<strong>Total € '+ 'test1' + '</strong>');
+            $('#n5').show();
+            $('#n6').show();
          }
      })
- 
- 
- /*$("#table").on('click', '.details', function(){
- 
-     var id = $(this).attr("id");		
-     var action = "fetchOrders";
-             $.ajax({
-                 url:"../php/action_cart.php",
-                 method:"GET",
-                 data:{id:id, action:action},
-                 success:function(data){
-                     //window.location.replace("http://localhost/Tweb/assets/html/order_details.php");
-                 }
-             })
-     
-     
- });
- 
- $("#table").on('click', '.confirm', function(){
-     var id = $(this).attr("id");		
-     console.log(id)
-     var action = "confirmOrders";
-             $.ajax({
-                 url:"../php/action_orders.php",
-                 method:"GET",
-                 data:{id:id, action:action},
-                 success:function(data){
-                     table.ajax.reload()
-                 }
-                 
-             })
-     
-     
- });	*/
- 
- 
- 
- 
- 
+    $("#print").on('click', function(){
+        console.log("test")
+        $("div.PrintArea").printArea();
+    });*/
+    
  });
