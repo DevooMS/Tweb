@@ -2,7 +2,7 @@ $(document).ready(function(){
   
 
    var table= $('#table').DataTable( {
-        "paging":   false,
+       
         "ordering": false,
         "info":     false,
         "searching":   false,
