@@ -1,0 +1,9 @@
+$.ajax({
+    url:'../php/action_cart.php',
+    method:"POST",
+    dataType:"json",
+    data:{action:'countCart'},
+    success:function(data){
+        $('.cart-count').html(data.counter);
+    }
+})

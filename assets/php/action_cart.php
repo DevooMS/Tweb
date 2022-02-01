@@ -6,7 +6,7 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getCart') {
     $emp->getCart($output);
 }
 if(!empty($_GET['action']) && $_GET['action'] == 'deleteCart') {
-    $skuid=$_POST['skuid'];
+    $skuid=$_GET['skuid'];
 	$emp->deleteCart($skuid);
 }
 if(!empty($_POST['action']) && $_POST['action'] == 'cleanCart') {
@@ -17,5 +17,8 @@ if(!empty($_POST['action']) && $_POST['action'] == 'buyCart') {
 }
 if(!empty($_POST['action']) && $_POST['action'] == 'fetchCart') {
 	$emp->fetchCart();
+}
+if(!empty($_POST['action']) && $_POST['action'] == 'countCart') {
+	$emp->countCart();
 }
 ?>

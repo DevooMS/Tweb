@@ -8,3 +8,4 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/library/jquery.cookie-3.0.1.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/top.js"></script>

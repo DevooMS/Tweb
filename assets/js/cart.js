@@ -67,7 +67,11 @@ $("#table").on('click', '.delete', function(){
                 url:"../php/action_cart.php",
                 method:"GET",
                 data:{skuid:skuid, action:action},
-                success:function(data){table.ajax.reload()}
+                success:function(data){
+                    getCounter();
+                    table.ajax.reload();
+                
+                }
                 
             })
 
@@ -90,8 +94,6 @@ function cleanCart(){
     });
 
 };
-
-
 
 
 $("#checkout").on('click', function(){ 
@@ -167,6 +169,7 @@ function makeorder(){ //xss test <script>alert('hacked')</script>
         dataType:"json",
         data:{action:action,confirm:confirm},
         success: function(data){
+            getCounter();
             if(data.order==true){
                 $("#n5").html('<strong>'+ data.id + '</strong>');
                 $("#n6").html('<strong>'+ data.time + '</strong>');
@@ -188,4 +191,17 @@ function makeorder(){ //xss test <script>alert('hacked')</script>
           }
     });
 }
+function getCounter(){
+    console.log("test");
+    $.ajax({
+        url:'../php/action_cart.php',
+        method:"POST",
+        dataType:"json",
+        data:{action:'countCart'},
+        success:function(data){
+            $('.cart-count').html(data.counter);
+        }
+    })
+}
+
 });

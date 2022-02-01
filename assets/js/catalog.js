@@ -123,14 +123,13 @@ $(document).ready(function(){
 			method:"POST",
 			dataType:"json",
 			data:{skuid:skuid, action:action},
-			success:function(data) {		
-				console.log(data.cart)
-				
+			success:function(data) {
 				$('#deleteModal').modal('show');
 				$('#deletbtn').hide();
 				if(data.cart==0){
 				$('.modal-msgtill').html("<i></i> Buy Product");
 				$('.modal-msg').html("<i></i> Added to cart ");
+				getCounter();
 				}else if(data.cart==1){
 					$('.modal-msgtill').html("<i></i> Error");
 					$('.modal-msg').html("<i></i> You already added this product ");
@@ -138,16 +137,30 @@ $(document).ready(function(){
 					$('.modal-msgtill').html("<i></i> Error");
 					$('.modal-msg').html("<i></i> This product its not avaliable ");
 				}
-			
+
 			},
 			
 		})
 
 	});
+	function getCounter(){
+		console.log("test");
+		$.ajax({
+			url:'../php/action_cart.php',
+			method:"POST",
+			dataType:"json",
+			data:{action:'countCart'},
+			success:function(data){
+				$('.cart-count').html(data.counter);
+			}
+		})
+	}
+
 	$(".closebtn").on('click', function(){
 		$('#deleteModal').modal('hide');
 		$('#productModal').modal('hide');
 		
 	});
+
 
 });

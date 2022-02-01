@@ -67,7 +67,7 @@ class cart extends dbSetup {
     }
 
     function buyCart(){
-        if(isset($_SESSION["cart"])){
+        if(isset($_SESSION["cart"])&&isset($_POST["skuid"])){
             $accst=0; 
             $end=sizeof($_POST["skuid"]);
             $i=1;
@@ -150,6 +150,14 @@ class cart extends dbSetup {
     function clearCart(){
         unset($_SESSION['cart']);
         
+    }
+
+    function countCart(){
+       if(isset($_SESSION["cart"])){
+        $cart= count($_SESSION["cart"]);
+        $out=array('counter'=>$cart);
+        echo json_encode($out);
+       }
     }
 }
 

@@ -124,7 +124,6 @@ class catalog extends dbSetup {
 
 	public function buyProduct(){
 		$skuid=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['skuid']),FILTER_SANITIZE_SPECIAL_CHARS);
-
 		$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 		$result = mysqli_query($this->dbConnect, $sqlQuery);	
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC); //Recupera la riga successiva di un set di risultati come array associativo, numerico o entrambi
@@ -137,7 +136,6 @@ class catalog extends dbSetup {
 		$cost = $row['cost'];
 		if($qtk>0){
 			if(isset($_SESSION["cart"])) {  //verifico se e il carello e stato inizializzato se non lo e faccio else 
-
 					$item_array_id = array_column($_SESSION["cart"], "item_id");  
 					
 					if(!in_array($id, $item_array_id))  {  
