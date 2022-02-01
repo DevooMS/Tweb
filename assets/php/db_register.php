@@ -5,11 +5,11 @@
     if (isset($_SERVER["REQUEST_METHOD"]) || $_SERVER["REQUEST_METHOD"] = "POST") {
         if (isset($_POST['submit'])) {
             if (!empty($_POST['email']) && isset($_POST['password']) && isset($_POST['vat_number']) && isset($_POST['firstname']) && isset($_POST['lastname'])){
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $email = $_POST['email'];
-                $vat_number = $_POST['vat_number'];
-                $password = $_POST['password'];
+                $firstname = filter_var($_POST['firstname'],FILTER_SANITIZE_SPECIAL_CHARS);
+                $lastname = filter_var($_POST['lastname'],FILTER_SANITIZE_SPECIAL_CHARS);
+                $email = filter_var($_POST['email'],FILTER_SANITIZE_SPECIAL_CHARS);
+                $vat_number = filter_var($_POST['vat_number'],FILTER_SANITIZE_SPECIAL_CHARS);
+                $password = ($_POST['password']);
                 $user='user';
                 $md5pass=md5($password);
                         $Select = "SELECT email FROM register WHERE email = ? LIMIT 1";

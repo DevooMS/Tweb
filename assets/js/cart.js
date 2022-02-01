@@ -132,13 +132,18 @@ function checkres(data){
     if(data.error>0){
         $('.modal-errorModal').html("<i></i> Error");
         if(data.error==1){
-            $('.modal-error').html("<i></i> One or more items are no longer available in your cart");
+            $('#msgModal').hide();
+            $('.modal-error').html("<i></i> One or more items are no longer available in your cart article will be removed");
             $('#errorModal').modal('show');
+            table.ajax.reload()
         }else if(data.error==2){
-            $('.modal-error').html("<i></i> One or more items are not longer available in your cart");
+            $('#msgModal').hide();
+            $('.modal-error').html("<i></i> One or more items price are changed article will be removed");
             $('#errorModal').modal('show');
+            table.ajax.reload()
       
         }else if(data.error==3){
+            $('#msgModal').hide();
             $('.modal-error').html("<i></i> Your cart is empty");
             $('#errorModal').modal('show');
         }
@@ -152,7 +157,7 @@ function checkres(data){
     
 }
 
-function makeorder(){
+function makeorder(){ //xss test <script>alert('hacked')</script>
 
     var action='fetchCart';
     var confirm = table.column(1).data().toArray();

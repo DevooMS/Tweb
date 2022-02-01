@@ -68,7 +68,7 @@ class catalog extends dbSetup {
 
 	public function getProduct(){
 		if($_POST["skuid"]) {
-			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+			$skuid=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['skuid']),FILTER_SANITIZE_SPECIAL_CHARS);
 			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 			$result = mysqli_query($this->dbConnect, $sqlQuery);	
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC); //Recupera la riga successiva di un set di risultati come array associativo, numerico o entrambi
@@ -78,11 +78,11 @@ class catalog extends dbSetup {
 	public function updateProduct(){
 		if ($_SESSION["type"] == "admin") {	
 			if($_POST['skuid']) {	
-				$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
-				$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
-				$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
-				$qty=$this->dbConnect->real_escape_string($_POST["qty"]);
-				$cost=$this->dbConnect->real_escape_string($_POST["cost"]);
+				$skuid=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['skuid']),FILTER_SANITIZE_SPECIAL_CHARS);
+				$nmproduct=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['nmproduct']),FILTER_SANITIZE_SPECIAL_CHARS);
+				$brand=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['brand']),FILTER_SANITIZE_SPECIAL_CHARS);
+				$qty=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['qty']),FILTER_SANITIZE_SPECIAL_CHARS);
+				$cost=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['cost']),FILTER_SANITIZE_SPECIAL_CHARS);
 
 				$updateQuery = "UPDATE ".$this->productTable." 
 				SET namep = '".$nmproduct."', brand = '".$brand."', skuid = '".$skuid."', qty = '".$qty."' , cost = '".$cost."'
@@ -94,11 +94,11 @@ class catalog extends dbSetup {
 	public function addProduct(){
 		if ($_SESSION["type"] == "admin") {	
 		
-			$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
-			$nmproduct=$this->dbConnect->real_escape_string($_POST["nmproduct"]);
-			$brand=$this->dbConnect->real_escape_string($_POST["brand"]);
-			$qty=$this->dbConnect->real_escape_string($_POST["qty"]);
-			$cost=$this->dbConnect->real_escape_string($_POST["cost"]);
+			$skuid=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['skuid']),FILTER_SANITIZE_SPECIAL_CHARS);
+			$nmproduct=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['nmproduct']),FILTER_SANITIZE_SPECIAL_CHARS);
+			$brand=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['brand']),FILTER_SANITIZE_SPECIAL_CHARS);
+			$qty=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['qty']),FILTER_SANITIZE_SPECIAL_CHARS);
+			$cost=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['cost']),FILTER_SANITIZE_SPECIAL_CHARS);
 
 			$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 			$result = mysqli_query($this->dbConnect, $sqlQuery);	
@@ -114,7 +114,7 @@ class catalog extends dbSetup {
 	public function deleteProduct(){
 		if ($_SESSION["type"] == "admin") {	
 			if($_POST["skuid"]) {
-				$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+				$skuid=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['skuid']),FILTER_SANITIZE_SPECIAL_CHARS);
 
 				$updateQuery = "UPDATE ".$this->productTable." SET qty = 0 WHERE skuid ='".$skuid."'";
 				$isUpdated = mysqli_query($this->dbConnect, $updateQuery);	
@@ -123,7 +123,7 @@ class catalog extends dbSetup {
 	}
 
 	public function buyProduct(){
-		$skuid=$this->dbConnect->real_escape_string($_POST["skuid"]);
+		$skuid=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['skuid']),FILTER_SANITIZE_SPECIAL_CHARS);
 
 		$sqlQuery = "SELECT * FROM ".$this->productTable." WHERE skuid = '".$skuid."'";
 		$result = mysqli_query($this->dbConnect, $sqlQuery);	

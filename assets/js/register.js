@@ -8,59 +8,72 @@ $().ready(function() {
             // login - nome del campo di input da validare
             email: {
                 required: true,
+                alphanumeric: true,
                 // Definiamo il campo email come un campo di tipo email
                 email: true
             },
             password: {
                 required: true,
+                alphanumeric: true,
                 // Settiamo la lunghezza minima e massima per il campo password
                 minlength: 5,
                 maxlength: 15
             },
             confirm_password: {
                 required: true,
+                alphanumeric: true,
                 //verifico che la confirm_password sia uguale a password 
                 equalTo: "#password",
             },
             vat_number: {
                 required: true,
+                alphanumeric: true,
                 minlength: 5,
                 maxlength: 20
             },
             firstname: {
                 required: true,
+                alphanumeric: true,
             },
             lastname: {
                 required: true,
+                alphanumeric: true,
             }
 
         },
         // Personalizzimao i mesasggi di errore
         messages: {
+            
             email: {
+                alphanumeric:"Not allowed special letters",
                 required: "Please input email",
                 email2: "Please input a valid Email adress",
             },
             password: {
+                alphanumeric:"Not allowed special letters",
                 required: "Please input password",
                 minlength: "The password cannot be less than 5",
                 maxlength: "The password cannot be exceed more than 20",
             },
             confirm_password: {
+                alphanumeric:"Not allowed special letters",
                 required: "Please input confirm password",
                 minlength: "The password cannot be less than 5",
                 maxlength: "The password cannot be exceed more than 20",
 
             },
             vat_number: {
+                alphanumeric:"Not allowed special letters",
                 required: "Please input password",
                 integer: "The vat number can only be numbers",
             },
             firstname: {
+                alphanumeric:"Not allowed special letters",
                 required: "Please input firstname",
                 lettersonly: "Can only be letters",
             },
             lastname: {
+                alphanumeric:"Not allowed special letters",
                 required: "Please input lastname",
                 lettersonly: "Can only be letters",
             },

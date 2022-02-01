@@ -59,8 +59,7 @@ class cart extends dbSetup {
         }
         foreach($_SESSION["cart"] as $keys => $values)   {  
             if($values["item_id"] == $skuid) {  
-                unset($_SESSION["cart"][$keys]);  
-                echo"Item Removed";  
+                unset($_SESSION["cart"][$keys]);
                 
             }  
             
@@ -84,7 +83,7 @@ class cart extends dbSetup {
                     if($row['qty']>0){
                         
                         if($end==$i){ 
-                         
+    
                             $out=array('error'=>0);
                             echo json_encode($out);
                         exit();
@@ -92,13 +91,13 @@ class cart extends dbSetup {
                         $i++;
                     }else{
                     
-
+                        $this->deleteCart($skuid);
                         $out=array('error'=>1);  //quantita non disponibile
                         echo json_encode($out);
                     }
             }else{
-        
-            $out=array('error'=>2);
+            $this->deleteCart($skuid);
+            $out=array('error'=>2);     //prezzo modificato
             echo json_encode($out);
             }
                 

@@ -10,9 +10,7 @@ $login = $_POST["loginemail"];
 $password = md5($_POST["loginpassword"]);
 $remember = $_POST["remember"];
 if ($login != "" && $password != "") {
-    ($stmt = $conn->prepare(
-        "SELECT * FROM `register` WHERE email = '$login' && `password` = '$password'"
-    )) or die(mysqli_error());
+    ($stmt = $conn->prepare("SELECT * FROM `register` WHERE email = '$login' && `password` = '$password'")) or die(mysqli_error());
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         $num_rows = $result->num_rows;

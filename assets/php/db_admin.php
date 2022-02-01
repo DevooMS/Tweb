@@ -31,8 +31,8 @@ class admin extends dbSetup {
             $email=$_POST["email"];
             }else{exit();}
             
-            $email=$this->dbConnect->real_escape_string($_POST["email"]);
-        
+            $email=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['email']),FILTER_SANITIZE_SPECIAL_CHARS);
+
             $sqlQuery = "SELECT * FROM ".$this->registerTable." WHERE email = '".$email."'";
             $result = mysqli_query($this->dbConnect, $sqlQuery);
            if(mysqli_num_rows($result)>0){
@@ -49,8 +49,8 @@ class admin extends dbSetup {
 	public function changePassword(){
 		if ($_SESSION["type"] == "admin") {	
 			if($_POST['email']) {	
-				$email=$this->dbConnect->real_escape_string($_POST["email"]);
-				$password=$this->dbConnect->real_escape_string($_POST["password"]);
+				$email=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['email']),FILTER_SANITIZE_SPECIAL_CHARS);
+				$email=filter_var(mysqli_real_escape_string($this->dbConnect,$_POST['password']),FILTER_SANITIZE_SPECIAL_CHARS);
                 $md5pass=md5($password);
 				$updateQuery = "UPDATE ".$this->registerTable." 
 				SET  password = '".$md5pass."' WHERE email ='".$email."'";

@@ -50,10 +50,10 @@ class profile extends dbSetup {
 
 	public function updateProfile(){
 		if($_GET['email']) {
-            $address=mysqli_real_escape_string($this->dbConnect,$_GET['address']);
-            $city=mysqli_real_escape_string($this->dbConnect,$_GET['city']);
-            $country=mysqli_real_escape_string($this->dbConnect,$_GET['country']);
-            $email=mysqli_real_escape_string($this->dbConnect,$_GET['email']);
+            $address=filter_var(mysqli_real_escape_string($this->dbConnect,$_GET['address']),FILTER_SANITIZE_SPECIAL_CHARS);
+            $city=filter_var(mysqli_real_escape_string($this->dbConnect,$_GET['city']),FILTER_SANITIZE_SPECIAL_CHARS);
+            $country=filter_var(mysqli_real_escape_string($this->dbConnect,$_GET['country']),FILTER_SANITIZE_SPECIAL_CHARS);
+            $email=filter_var(mysqli_real_escape_string($this->dbConnect,$_GET['email']),FILTER_SANITIZE_SPECIAL_CHARS);
             $updateQuery = "UPDATE ".$this->profileTable." 
 			SET confirm = '1',address = '".$address."', city = '".$city."' , country = '".$country."'WHERE email ='".$email."'";
 			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);
