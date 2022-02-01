@@ -71,7 +71,11 @@ $("#table").on('click', '.delete', function(){
                     getCounter();
                     table.ajax.reload();
                 
-                }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                  }
                 
             })
 
@@ -192,7 +196,6 @@ function makeorder(){ //xss test <script>alert('hacked')</script>
     });
 }
 function getCounter(){
-    console.log("test");
     $.ajax({
         url:'../php/action_cart.php',
         method:"POST",
