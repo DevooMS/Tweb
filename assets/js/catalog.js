@@ -33,7 +33,7 @@ $(document).ready(function(){
 					$('#addProduct').hide();
 					listData.columns([5,6]).visible(false);
 				}
-				console.log(data.utype);
+			
 			}
 		}
 	})
@@ -66,7 +66,6 @@ $(document).ready(function(){
 				$('#skuid').val(data.skuid);
 				$('#qty').val(data.qty);				
 				$('#cost').val(data.cost);
-				console.log("THISN"+JSON.stringify(utype));
 				$('.modal-title').html("<i></i> Edit product");
 				$('#action').val('updateProduct');
 				$('#save').val('Save');
@@ -87,8 +86,7 @@ $(document).ready(function(){
 				$('#productModal').modal('hide');				
 				$('#save').attr('disabled', false);
 				listData.ajax.reload();
-				//console.log("Parser"+JSON.parse(data.setError));
-				//if(data.setError==true){console.log("test");}
+
 			}
 		
 		})

@@ -51,8 +51,7 @@ $("#table").on('click', '.details', function(){
 });	
 
 $("#table").on('click', '.confirm', function(){
-    var id = $(this).attr("id");		
-    console.log(id)
+    var id = $(this).attr("id");
     var action = "confirmOrders";
             $.ajax({
                 url:"../php/action_orders.php",
@@ -66,9 +65,5 @@ $("#table").on('click', '.confirm', function(){
     
     
 });	
-
-
-
-
 
 });

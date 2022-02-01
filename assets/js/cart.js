@@ -47,7 +47,7 @@ $(document).ready(function(){
             .reduce( function (a, b) {
                 return intVal(a) + intVal(b);
             }, 0 );
-            console.log("thisn"+total);
+         
             $("#total").html('<strong>Total € '+ total + '</strong>');
         }
     

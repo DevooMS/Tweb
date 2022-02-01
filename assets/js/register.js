@@ -1,6 +1,6 @@
 $("#errormsg").hide();
 $().ready(function() {
-    console.log("this");
+  
     // Selezione form e definizione dei metodi di validazione
     $("#registerpage").validate({
         // Definiamo le nostre regole di validazione

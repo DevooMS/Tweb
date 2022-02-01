@@ -13,7 +13,7 @@ $(document).ready(function() {
 						$('#top').hide();
 						
 					}
-					console.log(data.utype)
+				
 				}else{window.location.replace("http://localhost/Tweb/index.html");}
 			}
 		})

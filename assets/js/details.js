@@ -31,21 +31,5 @@ $(document).ready(function(){
         });
 
  
-     /*$.ajax({
-         url:'../php/db_details.php',
-         method:"POST",
-         data:{action:"getBill"},
-         dataType:"json",
-         success:function(data){
-            $("#n5").html('<strong>Total € '+ 'test' + '</strong>');
-            $("#n6").html('<strong>Total € '+ 'test1' + '</strong>');
-            $('#n5').show();
-            $('#n6').show();
-         }
-     })
-    $("#print").on('click', function(){
-        console.log("test")
-        $("div.PrintArea").printArea();
-    });*/
-    
+  
  });

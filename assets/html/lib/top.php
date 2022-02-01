@@ -6,7 +6,7 @@
     	<li>Admin Section Activated</li>
         <div class="pull-right ml-3"> 
             <li>
-                <a href="#" class="admin"><i class="fas fa-address-card">ADMIN</i></a>
+                <a href="http://localhost/Tweb/assets/html/admin.php" class="admin"><i class="fas fa-address-card">ADMIN</i></a>
                 <a href="http://localhost/Tweb/assets/html/orders.php" class="admin"><i >ORDINI</i></a>
             </li> 
         </div>

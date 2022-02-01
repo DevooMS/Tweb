@@ -11,7 +11,6 @@ function printFlash(json) {
     // if isSet is true, then the flash message is set up and displayed
     if (json.unsuccessful) {
         if (json.isSet) {
-            //console.log("login_unsuccessful")
             $("#phpmsg").show();
             $("#phpmsg").css('color', 'red');
             $("#phpmsg").text(json.unsuccessful); //stampo il messaggio passato dalla sessione unsuccessful
