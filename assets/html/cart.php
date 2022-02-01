@@ -36,7 +36,7 @@
           </div>
         </div>
       </section>
-      <table id="table" class="table table-bordered table-striped" style="width:100%">
+      <table id="table table-fit" class="table table-bordered table-striped" style="width:100%">
         <thead>
           <tr>
             <th width="30%" class="text-center">Product Name</th>
@@ -56,7 +56,7 @@
           </tr>
         </tfoot>
       </table>
-      <table id="cart" class="table table-striped">
+      <table id="cart" class="table table-fit table-striped">
         <tfoot>
           <tr>
             <td>

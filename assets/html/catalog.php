@@ -16,16 +16,15 @@
   <div id="wrapper">
     <div class="d-flex flex-column mt-5" id="content-wrapper">
       <div id="content ">
-        <div class="container-fluid">
+        <div class="container-fluid w-auto">
           <div class="card shadow">
             <div class="card-header py-3">
               <p class="text-primary mt-1 fw-bold float-start">Catalog List</p>
-			  <button type="button" name="add" id="addProduct" class="btn btn-success btn-xs float-end">Add Product</button>
-              
-            </div>
+			        <button type="button" name="add" id="addProduct" class="btn btn-success btn-xs float-end">Add Product</button>
+              </div>
             <div class="card-body">
-              <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-                <table class="table my-0" id="catalogList">
+            
+                <table class="table my-0" id="catalogList" style="width:100%">
                   <thead>
                     <tr>
                       <th>Name Product</th>
@@ -39,7 +38,7 @@
                     </tr>
                   </thead><!--le tabelle da inserire-->
                 </table>
-              </div>
+              
               <div id="productModal" class="modal fade">
                 <div class="modal-dialog">
                   <form method="post" id="productForm" name="productForm">

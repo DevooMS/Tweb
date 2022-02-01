@@ -12,10 +12,10 @@
    </head>
    <body id="page-top">
       <div class="container mt-5">
-         <div class="card">
+         <div class="card w-auto ">
             <h5 class="card-header">Orders History</h5>
     
-            <table id="table" class="table" style="width:100%">
+            <table id="table" class="table " style="width:100%">
                <thead class="table-dark">
                   <tr>
                      <th width="30%" class="text-center">Order Number</th>
@@ -44,5 +44,4 @@
       </div>
     </div>
    </body>
-
 </html>
