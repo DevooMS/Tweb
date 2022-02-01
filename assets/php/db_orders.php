@@ -1,7 +1,6 @@
 <?php
 if(!isset($_SESSION)) {session_start();}
 require('connection_catalog.php');
-
 class orders extends dbSetup{	
     protected $hostNamep;
     protected $userNamep;
@@ -33,50 +32,70 @@ class orders extends dbSetup{
                 $sqlQuery = "SELECT * FROM ".$this->ordersTable."";
                 $result = mysqli_query($this->dbConnect, $sqlQuery);
                 $rowcount=mysqli_num_rows($result);
-                for($i=1;$rowcount>=$i;$i++){
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $data=array();
-                    $data[]=$row['id'];
-                    $data[]=$row['email'];
-                    $data[]=$row['time'];
-                    $data[]=$row['total'];
-                    $data[]=$row['status'];
-                    $data[] = '<button type="button" name="details" id="'.$row['id'].'" class="btn btn-success btn-xs details" >Details</button>';
-                    if($row['status']!='delivered'){
-                    $data[] = '<button type="button" name="confirm" id="'.$row['id'].'" class="btn btn-warning btn-xs  confirm" >Confirm</button>';
-                    }else{
-                    $data[]=' ';  
+                if($rowcount>0){
+                    for($i=1;$rowcount>=$i;$i++){
+                        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $data=array();
+                        $data[]=$row['id'];
+                        $data[]=$row['email'];
+                        $data[]=$row['time'];
+                        $data[]=$row['total'];
+                        $data[]=$row['status'];
+                        $data[] = '<button type="button" name="details" id="'.$row['id'].'" class="btn btn-success btn-xs details" >Details</button>';
+                        if($row['status']!='delivered'){
+                        $data[] = '<button type="button" name="confirm" id="'.$row['id'].'" class="btn btn-warning btn-xs  confirm" >Confirm</button>';
+                        }else{
+                        $data[]=' ';  
+                        }
+                        $productData[] = $data;
                     }
-                    $productData[] = $data;
+                    $output = array(
+                    "data"=> $productData,
+                    );
+                    echo json_encode($output);
+                }else{
+                    $array=[];
+                    $output = array(
+                         "data"=> $array,
+                    );
+                    echo json_encode($output);
                 }
-                $output = array(
-                "data"=> $productData,
-                );
-                echo json_encode($output);
+               
             }else{
                 $sqlQuery = "SELECT * FROM ".$this->ordersTable." WHERE email = '".$email."'";
                 $result = mysqli_query($this->dbConnect, $sqlQuery);
                 $rowcount=mysqli_num_rows($result);
-                for($i=1;$rowcount>=$i;$i++){
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $data=array();
-                    $data[]=$row['id'];
-                    $data[]=$row['email'];
-                    $data[]=$row['time'];
-                    $data[]=$row['total'];
-                    $data[]=$row['status'];
-                    $data[] = '<button type="button" name="details" id="'.$row['id'].'" class="btn btn-success btn-xs details" >Details</button>';
-                    $data[] = '<button type="button" name="confirm" id="'.$row['id'].'" class="btn btn-warning btn-xs confirm " >Confirm</button>';
-                   
-                    $productData[] = $data;
+                
+                if($rowcount>0){
+                    for($i=1;$rowcount>=$i;$i++){
+                        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $data=array();
+                        $data[]=$row['id'];
+                        $data[]=$row['email'];
+                        $data[]=$row['time'];
+                        $data[]=$row['total'];
+                        $data[]=$row['status'];
+                        $data[] = '<button type="button" name="details" id="'.$row['id'].'" class="btn btn-success btn-xs details" >Details</button>';
+                        $data[] = '<button type="button" name="confirm" id="'.$row['id'].'" class="btn btn-warning btn-xs confirm " >Confirm</button>';
+                       
+                        $productData[] = $data;
+                    }
+                    
+                    $output = array(
+                    "data"=> $productData,
+                    );
+                    echo json_encode($output);
+                    
+                }else{
+                    $array=[];
+                    $output = array(
+                         "data"=> $array,
+                    );
+                    echo json_encode($output);   
                 }
-                
-                $output = array(
-                "data"=> $productData,
-                );
-                echo json_encode($output);
-                
-            }
+         
+            
+                }
             
         
         }else{

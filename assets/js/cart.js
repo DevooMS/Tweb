@@ -1,16 +1,21 @@
 $(document).ready(function(){
+   
     $.ajax({
         url:"../php/action_profile.php",
         method:"POST",
         dataType:"json",
         data:{action:'getProfile'},
         success:function(data){
-            
            $('#n1').html('<i></i> Name: '+data.firstname+' '+data.lastname +' ');
            $('#n2').html('<i></i> Address: '+data.address+' '+data.city +' '+data.country);
            $('#n3').html('<i></i> Vat Numer: '+data.vat_number+'');
            $('#n5').hide();
            $('#n6').hide();
+           if(data.city==''||data.address==''||data.country==''){
+            $('.modal-errorModal').html("<i></i> Warning");
+            $('.modal-error').html("<i></i>You have not filled address are you sure to proceed? <br> To change address information go to profile page");
+            $('#errorModal').modal('show');
+           }
 
         }
     })
@@ -26,11 +31,10 @@ $(document).ready(function(){
 			data:{action:'getCart'},
 			dataType:"json",
 		},
-        language: {                                                         
-            loadingRecords: "The Cart its Empty!",
-            zeroRecords: "All items its removed "
+        language: {
+            zeroRecords: "The Cart its Empty !"
         },
-        "columnDefs": [{"className": "dt-center", "targets": "_all"} ],     //per centrare la tabella
+        "columnDefs": [{"className": "dt-center", "targets": "_all" } ],     //per centrare la tabella
         "footerCallback": function ( row, data, start, end, display ) {    //per fare la somma del totale metodo datatable
             var api = this.api(), data;
  
@@ -52,8 +56,8 @@ $(document).ready(function(){
         }
     
     });
-  
 
+  
 
 $("#table").on('click', '.delete', function(){
     table.row( $(this).parents('tr') ).remove().draw();

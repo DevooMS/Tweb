@@ -55,18 +55,14 @@ class admin extends dbSetup {
 				$updateQuery = "UPDATE ".$this->registerTable." 
 				SET  password = '".$md5pass."' WHERE email ='".$email."'";
 				$isUpdated = mysqli_query($this->dbConnect, $updateQuery);
-               
-                echo "Affected rows: " . $updateQuery -> affected_rows;
-
-
-               /* if(mysqli_affected_rows($this->connection)>0){
+                $aff= $this->dbConnect -> affected_rows;
+                if($aff>0){
                     $out=array('changed'=>true);
                     echo json_encode($out);	
                 }else{
                     $out=array('changed'=>false);
                     echo json_encode($out);	 
-                    }*/
-                	
+                    }
 			}	
 		}else{
             die();

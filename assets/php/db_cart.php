@@ -26,7 +26,7 @@ class cart extends dbSetup {
     }
  	
     function getCart($out){
-        if(isset($_SESSION["cart"])){
+        if(isset($_SESSION["cart"])&&($_SESSION["cart"]!=null)){
             foreach($_SESSION["cart"] as $keys => $values){  //$array index content
                 $data=array();
                 $data[]=$values["item_name"];
@@ -34,7 +34,7 @@ class cart extends dbSetup {
                 $data[]=$values["item_quantity"];
                 $data[]=$values["item_price"];
                 $data[] = '<button type="button" name="delete" skuid="'.$values["item_id"].'" class="btn btn-danger btn-xs delete" >Delete</button>';
-               
+                
                 $productData[] = $data;
             }  
             $output = array(
@@ -42,9 +42,15 @@ class cart extends dbSetup {
             );
             echo json_encode($output);
         }else{
-            echo "error";
-
+            
+           $array=[];
+           $output = array(
+                "data"=> $array,
+           );
+           echo json_encode($output);    
+            
         } 
+       
     }
 
     function deleteCart($skuid){

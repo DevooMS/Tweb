@@ -23,7 +23,7 @@ class catalog extends dbSetup {
         }
     }
  	
-	public function catalogList(){		
+	public function catalogList(){
 		$sqlQuery = "SELECT * FROM ".$this->productTable." ";       //this ritorna il valore globale di productTable che e 'product'
 		$stQuerry=$this->dbConnect->real_escape_string($_POST["search"]["value"]);
 		if(!empty($stQuerry)){

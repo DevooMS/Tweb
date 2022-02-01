@@ -29,7 +29,11 @@ $(document).ready(function(){
             "columnDefs": [{"className": "dt-center", "targets": "_all"} ],//per centrare la tabella
             "pageLength": 10       
         });
-
+        
+        $("#print").on('click', function(){
+            console.log("test")
+            $("div.PrintArea").printArea();
+        });
  
   
  });
