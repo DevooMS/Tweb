@@ -3,8 +3,9 @@
 <?php include("lib/resource.php")?>
 <head>
   <title>Catalog - Yuna</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../js/library/jquery.validator-1.19.js"></script>
-  <script src="../js/printget.js"></script>
+  <script src="../js/login.js"></script> 
 </head>
 <body class="bg-gradient-primary">
   <div class="container">
@@ -52,7 +53,7 @@
       </div>
     </div>
   </div>
-  <script src="../js/login.js"></script> 
+  
   <script src="../js/cookie.js"></script>
 </body>
 </html>

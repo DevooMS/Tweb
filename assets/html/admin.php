@@ -3,7 +3,7 @@
 <?php include "lib/top.php"; ?>
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../js/library/jquery.validator-1.19.js"></script>
   <script src="../js/admin.js"></script>
   

@@ -6,7 +6,7 @@ if(isset($_SESSION['user'])){
         $total= $_SESSION["total"];
         $address= json_decode($_SESSION["address"]);
         $content= json_decode($_SESSION["content"]);
-      
+       
         
         foreach($content as $key=> $values){
             $data=array();
@@ -30,15 +30,6 @@ if(isset($_SESSION['user'])){
             "total"=>$total,
             );
             echo json_encode($output);
-        /* $output = array( 
-             "id"=> $id,
-             "time"=>$time,
-             "data"=> $content, 
-             "address"=>$address,
-             "total"=>$total
-         );
-         echo json_encode($output);*/
-         
 
 
 

@@ -2,15 +2,15 @@
 
 <html>
 <?php include("lib/resource.php")?>
+<head><meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <script src="../js/library/jquery.validator-1.19.js"></script>
-<script src="../js/printget.js" type="text/javascript"></script>
 <body class="bg-gradient-primary">
     <div class="container">
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image" style="background-image: url(../img/dogs/image5.jpg);"></div>
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(../img/dogs/image5.jpg );"></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">

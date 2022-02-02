@@ -117,7 +117,6 @@ class orders extends dbSetup{
 
 
     function fetchOrders(){
-        echo"n1";
         $id=$this->dbConnect->real_escape_string($_GET["id"]);
         $sqlQuery = "SELECT * FROM ".$this->ordersTable." WHERE id = '".$id."'";
         $result = mysqli_query($this->dbConnect, $sqlQuery);
@@ -125,8 +124,14 @@ class orders extends dbSetup{
         $_SESSION["id"]=$row['id'];
         $_SESSION["time"]=$row['time'];
         $_SESSION["total"]=$row['total'];
-        $_SESSION["address"]=$row['address'];
         $_SESSION["content"]=$row['content'];
+        if(is_null($row['status'])){
+            $_SESSION["address"]=' ';
+            }else{
+            $_SESSION["address"]=$row['address'];
+            }
+
+        
     }
 }
 

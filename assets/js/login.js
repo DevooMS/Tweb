@@ -40,13 +40,40 @@ $().ready(function() {
                         remember:thisremember
                         }, 
                         dataType:'json',
-                  
-                        });
-
-    
+                    });
                     printthis(printthis());
             });
         }
     });
+    
+    function printthis() {
+        $.get({
+            url: "../php/msg_check.php",
+            datatype: "json",
+            success: function(json){
+                if (json.unsuccessful) {
+                    if (json.isSet) {
+                        $("#phpmsg").show();
+                        $("#phpmsg").css('color', 'red');
+                        $("#phpmsg").text(json.unsuccessful); //stampo il messaggio passato dalla sessione unsuccessful
+                       
+                    }
+                } else if (json.successfully) {
+                    if (json.isSet) {
+                        callcookie();
+                        $("#phpmsg").show();
+                        $("#phpmsg").css('color', 'green');
+                        $("#phpmsg").text(json.successfully); //stampo il messaggio passato dalla sessione unsuccessful
+                        window.location.replace("http://localhost/Tweb/assets/html/profile.php");
+                    }
+                } else {
+                    $("#phpmsg").hide();
+                }
+    
+            },
+        });
+    }
+    
+    
 });
 

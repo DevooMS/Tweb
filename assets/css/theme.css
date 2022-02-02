@@ -57,7 +57,7 @@ td {
 /*table size auto*/
 
 
-/****************************/
+/*css preso da fonts google*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,700i,900');
 .body {
     font-family: 'Roboto', sans-serif;
