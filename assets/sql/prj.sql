@@ -70,7 +70,7 @@ INSERT INTO `product` (`namep`, `brand`, `skuid`, `qty`, `cost`) VALUES
 ('Samsung Galaxy Z Flip 3 5g', 'Samsung', 'R-064-B09KY3K3J7', 12, '899.56'),
 ('Vetro Temperato Teclast M40', 'Telcast', 'S-012-B093LB3HF5', 7, '5.99'),
 ('Iphone X', 'Apple', 'Z-015-B093FG3HF5', 16, '1099.00'),
-('Macbook Pro 15\" M1', 'Apple', 'U-023-ZZZ3LB3HF5', 19, '2999.00');
+('Macbook Pro 15 M1', 'Apple', 'U-023-ZZZ3LB3HF5', 19, '2999.00');
 
 -- --------------------------------------------------------
 
